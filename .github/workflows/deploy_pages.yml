@@ -1,18 +1,26 @@
-name: Deploy Report to GitHub Pages
+name: Deploy Report to GitHub Pages (gh-pages)
+
+# Deploys the built report/html directory to the gh-pages branch using peaceiris/actions-gh-pages.
+# This workflow triggers when the "Build Report (docs -> GitHub Pages)" workflow completes successfully
+# or can be manually dispatched. It includes concurrency and a small randomized backoff to reduce queue collisions.
 
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ["Build Report"]
+    workflows: ["Build Report (docs -> GitHub Pages)"]
     types:
       - completed
+
+concurrency:
+  group: pages-deploy-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           persist-credentials: true
@@ -24,16 +32,37 @@ jobs:
 
       - name: Install deps
         run: |
-          pip install --upgrade pip
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install jinja2
 
-      - name: Build report (if not already built)
+      - name: Build report if missing
         run: |
-          python -m driftmonitor.report.html.report_builder || true
+          # Build the report if for some reason it wasn't built in the triggering workflow
+          if [ ! -f report/html/report.html ]; then
+            echo "report/html/report.html missing, building now..."
+            python -m driftmonitor.report.html.report_builder
+          else
+            echo "report/html/report.html already exists."
+          fi
+
+      - name: Verify report exists
+        run: |
+          if [ ! -f report/html/report.html ]; then
+            echo "report/html/report.html not found — aborting deploy"
+            exit 1
+          fi
+          echo "Report is present."
+
+      - name: Small randomized backoff
+        run: |
+          # Random sleep between 1 and 10 seconds to reduce race conditions
+          sleep $(( (RANDOM % 10) + 1 ))
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./report/html
+          # optional: set user.name and user.email via commit_message if desired:
+          # commit_message: "Automated pages deploy: ${{ github.sha }}"

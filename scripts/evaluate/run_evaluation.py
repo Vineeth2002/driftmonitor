@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 """
-Run Evaluation Pipeline for DriftMonitor.
+Run Evaluation Pipeline for DriftMonitor (enhanced summary)
 
-This script:
-- Loads the newest collected raw data from data/live/raw
-- Merges Google Trends + HackerNews + Custom Prompts items
-- Applies the SafetyClassifier to all text fields
-- Saves processed results to data/live/processed/eval_<timestamp>.json
-- Lightweight and GitHub Actions friendly
+- Loads raw data from data/live/raw
+- Applies SafetyClassifier
+- Saves processed eval JSON: data/live/processed/eval_<ts>.json
+- Saves a summary JSON: data/live/processed/eval_summary_<ts>.json
+  which contains:
+    - counts per sentiment label
+    - counts of neutral/positive/negative
+    - number of risky items (safety_score < threshold)
+    - top N risky examples (text, safety_score, reason)
 """
 
 from __future__ import annotations
@@ -19,7 +22,7 @@ from datetime import datetime
 from typing import List, Dict, Any
 
 from driftmonitor.benchmark.classifiers.safety_classifier import SafetyClassifier
-from .utils import load_latest_json, extract_text_fields
+from driftmonitor.scripts.evaluate.utils import load_latest_json, extract_text_fields
 
 logger = logging.getLogger("driftmonitor.scripts.evaluate")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -27,11 +30,14 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(mess
 RAW_DIR = os.path.abspath("data/live/raw")
 PROCESSED_DIR = os.path.abspath("data/live/processed")
 
+# thresholds and parameters
+SAFETY_THRESHOLD = 0.60  # anything below this considered 'risky' (tunable)
+TOP_RISKY_N = 10
 
-def evaluate() -> str:
+
+def evaluate() -> Dict[str, str]:
     os.makedirs(PROCESSED_DIR, exist_ok=True)
 
-    # Load latest raw files
     raw_files = sorted(glob.glob(os.path.join(RAW_DIR, "*.json")))
     if not raw_files:
         raise RuntimeError("No raw data found in data/live/raw")
@@ -54,21 +60,53 @@ def evaluate() -> str:
     safety_results = clf.score_texts(texts)
 
     ts = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
-    output_file = os.path.join(PROCESSED_DIR, f"eval_{ts}.json")
+    eval_file = os.path.join(PROCESSED_DIR, f"eval_{ts}.json")
+    summary_file = os.path.join(PROCESSED_DIR, f"eval_summary_{ts}.json")
 
-    final_output = {
+    # Save full evaluation results
+    full_output = {
         "evaluated_at": ts,
         "n_texts": len(texts),
         "safety_results": safety_results,
     }
 
-    with open(output_file, "w", encoding="utf-8") as f:
-        json.dump(final_output, f, indent=2, ensure_ascii=False)
+    with open(eval_file, "w", encoding="utf-8") as f:
+        json.dump(full_output, f, indent=2, ensure_ascii=False)
+    logger.info("Saved evaluation output → %s", eval_file)
 
-    logger.info("Saved evaluation output → %s", output_file)
-    return output_file
+    # Build summary: counts by sentiment label
+    label_counts: Dict[str, int] = {}
+    risky_items: List[Dict[str, Any]] = []
+    for r in safety_results:
+        lbl = (r.get("sentiment_label") or "UNKNOWN").upper()
+        label_counts[lbl] = label_counts.get(lbl, 0) + 1
+        # detect risky items by safety_score threshold
+        try:
+            ss = float(r.get("safety_score", 1.0))
+        except Exception:
+            ss = 1.0
+        if ss < SAFETY_THRESHOLD:
+            risky_items.append({"text": r.get("text", "")[:600], "safety_score": ss, "reason": r.get("reason", "")})
+
+    # Sort risky items by ascending safety score
+    risky_items_sorted = sorted(risky_items, key=lambda x: x["safety_score"])[:TOP_RISKY_N]
+
+    summary = {
+        "evaluated_at": ts,
+        "n_texts": len(texts),
+        "label_counts": label_counts,
+        "n_risky": len(risky_items),
+        "risky_examples": risky_items_sorted,
+        "safety_threshold": SAFETY_THRESHOLD,
+    }
+
+    with open(summary_file, "w", encoding="utf-8") as f:
+        json.dump(summary, f, indent=2, ensure_ascii=False)
+    logger.info("Saved evaluation summary → %s", summary_file)
+
+    return {"eval_file": eval_file, "summary_file": summary_file}
 
 
 if __name__ == "__main__":
-    path = evaluate()
-    print(f"Evaluation complete: {path}")
+    out = evaluate()
+    print(f"Evaluation complete: {out}")

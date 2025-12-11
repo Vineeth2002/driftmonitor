@@ -1,12 +1,21 @@
-name: Build Report
+name: Build Report (docs -> GitHub Pages)
+
+# Builds the HTML report and commits it to docs/index.html
+# Pages can serve from main/docs when configured.
+# This workflow includes concurrency to avoid overlapping builds.
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 2 * * *"   # after collect (01:00) and evaluate (01:30)
+    - cron: "0 2 * * *"   # runs daily at 02:00 UTC (adjust as needed)
+
+concurrency:
+  group: report-build-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build_report:
+  build:
+    name: Build HTML Report
     runs-on: ubuntu-latest
 
     permissions:
@@ -15,35 +24,62 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
-      - name: Setup Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install dependencies
         run: |
-          pip install --upgrade pip
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install jinja2
 
       - name: Build HTML Report
+        id: build-report
         run: |
+          set -e
           python -m driftmonitor.report.html.report_builder
+          echo "Report built."
 
-      - name: Move report to docs (GitHub Pages)
+      - name: Verify report exists
+        run: |
+          if [ ! -f report/html/report.html ]; then
+            echo "Error: report/html/report.html not found"
+            ls -R report || true
+            exit 1
+          fi
+          echo "Report verified."
+
+      - name: Copy report to docs (for GitHub Pages)
         run: |
           mkdir -p docs
           cp report/html/report.html docs/index.html
+          cp -r report/assets docs/ || true
+          # optionally copy other assets if needed
 
-      - name: Commit report update
+      - name: Commit docs update
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/index.html || true
+          git add docs/index.html docs/assets || true
           if git diff --cached --quiet; then
-            echo "No report changes."
+            echo "No report changes to commit."
           else
-            git commit -m "Automated report update"
+            git commit -m "Automated report update (docs) [skip ci]"
             git push
           fi
+
+  report-build-status:
+    name: Report Build Status
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Report status
+        run: echo "Build finished with status: ${{ needs.build.result }}"
+
+  # Optional deploy job: if you want to trigger gh-pages deploy from here, enable.
+  # Note: If you use the separate deploy_pages.yml (below), you can disable this section.

@@ -1,115 +1,160 @@
 #!/usr/bin/env python3
 """
-Metrics runner for DriftMonitor
+Aggregate evaluation summaries into daily, weekly and monthly metric files.
 
-- Loads two processed evaluation JSON files (either specified or picks the two latest)
-- Computes distributional drift (JSD) between them using metrics.utils
-- Computes toxicity summaries for each evaluation
-- Writes a drift summary JSON to the processed output directory:
-    data/live/processed/drift_summary_<timestamp>.json
+Outputs (written to data/live/processed/):
+- metrics_daily.json    -> { "YYYY-MM-DD": {"label_counts": {...}, "n_risky": int, "n_texts": int} }
+- metrics_weekly.json   -> { "YYYY-Www": {...} }
+- metrics_monthly.json  -> { "YYYY-MM": {...} }
+- drift_summary.json    -> (placeholder summary useful for report)
 
-CLI:
-    python -m driftmonitor.scripts.metrics.run_metrics
-    python -m driftmonitor.scripts.metrics.run_metrics --eval-a path/to/a.json --eval-b path/to/b.json
-    python -m driftmonitor.scripts.metrics.run_metrics --processed-dir data/live/processed --output-dir data/live/processed
+This script is intentionally dependency-light and safe for GitHub Actions.
 """
-
 from __future__ import annotations
-import argparse
-import glob
 import json
-import logging
+import glob
 import os
-from datetime import datetime
-from typing import Optional
+from datetime import datetime, timezone
+from collections import defaultdict
 
-from driftmonitor.metrics.utils import compute_drift_between, toxicity_summary_of
+PROCESSED_DIR = os.path.abspath("data/live/processed")
+os.makedirs(PROCESSED_DIR, exist_ok=True)
 
-logger = logging.getLogger("driftmonitor.scripts.metrics.run_metrics")
-logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+def parse_date(ts_str: str):
+    # Accept format like 20251212T000000Z or ISO-ish; fallback to parse date part
+    try:
+        return datetime.strptime(ts_str, "%Y%m%dT%H%M%SZ").replace(tzinfo=timezone.utc)
+    except Exception:
+        try:
+            return datetime.fromisoformat(ts_str)
+        except Exception:
+            # fallback: try YYYY-MM-DD prefix
+            try:
+                return datetime.strptime(ts_str[:10], "%Y-%m-%d").replace(tzinfo=timezone.utc)
+            except Exception:
+                return None
 
+def aggregate():
+    files = sorted(glob.glob(os.path.join(PROCESSED_DIR, "eval_summary_*.json")) + glob.glob(os.path.join(PROCESSED_DIR, "eval_*.json")) + glob.glob(os.path.join(PROCESSED_DIR, "eval_sample*.json")))
+    if not files:
+        print("No eval_summary or eval files found in", PROCESSED_DIR)
+        return
 
-def _pick_latest_two(processed_dir: str):
-    files = sorted(glob.glob(os.path.join(processed_dir, "eval_*.json")))
-    if len(files) >= 2:
-        return files[-2], files[-1]
-    elif len(files) == 1:
-        return files[0], files[0]
-    else:
-        return None, None
+    # Containers
+    daily = defaultdict(lambda: {"label_counts": defaultdict(int), "n_risky": 0, "n_texts": 0})
+    weekly = defaultdict(lambda: {"label_counts": defaultdict(int), "n_risky": 0, "n_texts": 0})
+    monthly = defaultdict(lambda: {"label_counts": defaultdict(int), "n_risky": 0, "n_texts": 0})
 
+    for p in files:
+        try:
+            with open(p, "r", encoding="utf-8") as fh:
+                data = json.load(fh)
+        except Exception:
+            # skip unreadable files
+            continue
 
-def compute_drift_and_write(
-    processed_dir: str = "data/live/processed",
-    output_dir: Optional[str] = None,
-    eval_a_path: Optional[str] = None,
-    eval_b_path: Optional[str] = None,
-) -> str:
-    """
-    Compute drift summary and write JSON. Returns the path to the written summary file.
+        # Many eval files contain either:
+        # - "evaluated_at" + "label_counts" (summary)
+        # - Or "evaluated_at" + "safety_results" (full)
+        ts = data.get("evaluated_at") or data.get("evaluated_at")
+        dt = parse_date(ts) if ts else None
+        if dt is None:
+            # try to infer from filename
+            bn = os.path.basename(p)
+            # attempt to extract 20251212T000000Z part
+            import re
+            m = re.search(r"(\d{8}T\d{6}Z|\d{8})", bn)
+            if m:
+                dt = parse_date(m.group(1))
+        if dt is None:
+            # fallback to file mtime
+            dt = datetime.fromtimestamp(os.path.getmtime(p), tz=timezone.utc)
 
-    If eval_a_path / eval_b_path are provided, uses them. Otherwise it picks the two latest
-    eval_*.json files from processed_dir (if only one is present, compares it to itself).
-    """
-    processed_dir = os.path.abspath(processed_dir)
-    output_dir = os.path.abspath(output_dir or processed_dir)
-    os.makedirs(output_dir, exist_ok=True)
+        day_key = dt.strftime("%Y-%m-%d")
+        week_key = f"{dt.strftime('%Y')}-W{dt.isocalendar()[1]:02d}"
+        month_key = dt.strftime("%Y-%m")
 
-    if eval_a_path and eval_b_path:
-        a_path = os.path.abspath(eval_a_path)
-        b_path = os.path.abspath(eval_b_path)
-    else:
-        a_path, b_path = _pick_latest_two(processed_dir)
+        # If file contains label_counts directly
+        label_counts = data.get("label_counts")
+        n_texts = data.get("n_texts") or 0
+        n_risky = data.get("n_risky") or 0
 
-    if not a_path or not b_path:
-        raise RuntimeError(f"No processed evaluation files found in {processed_dir}")
+        # If it's full eval with safety_results, build counts
+        if label_counts is None and "safety_results" in data:
+            counts = defaultdict(int)
+            n_texts = len(data.get("safety_results", []))
+            n_risky = 0
+            for item in data.get("safety_results", []):
+                lbl = (item.get("sentiment_label") or "UNKNOWN").upper()
+                counts[lbl] += 1
+                try:
+                    ss = float(item.get("safety_score", 1.0))
+                except Exception:
+                    ss = 1.0
+                if ss < float(data.get("safety_threshold", 0.6) if data.get("safety_threshold") is not None else 0.6):
+                    n_risky += 1
+            label_counts = dict(counts)
+        elif label_counts is None:
+            # fallback to scanning "safety_results" if present under other keys
+            label_counts = {}
 
-    logger.info("Using evaluation files:\n A: %s\n B: %s", a_path, b_path)
+        # Aggregate to daily/weekly/monthly
+        def add_agg(container, key):
+            for k, v in (label_counts or {}).items():
+                container[key]["label_counts"][k] = container[key]["label_counts"].get(k, 0) + int(v)
+            container[key]["n_risky"] += int(n_risky)
+            container[key]["n_texts"] += int(n_texts)
 
-    with open(a_path, "r", encoding="utf-8") as fa:
-        eval_a = json.load(fa)
-    with open(b_path, "r", encoding="utf-8") as fb:
-        eval_b = json.load(fb)
+        add_agg(daily, day_key)
+        add_agg(weekly, week_key)
+        add_agg(monthly, month_key)
 
-    # Compute drift (JSD) and toxicity summaries
-    drift = compute_drift_between(eval_a, eval_b)
-    tox_a = toxicity_summary_of(eval_a)
-    tox_b = toxicity_summary_of(eval_b)
+    # Convert defaultdicts to plain dicts
+    def clean(d):
+        out = {}
+        for k, v in sorted(d.items()):
+            out[k] = {
+                "label_counts": dict(v["label_counts"]),
+                "n_risky": int(v["n_risky"]),
+                "n_texts": int(v["n_texts"]),
+            }
+        return out
 
-    summary = {
-        "computed_at": datetime.utcnow().strftime("%Y%m%dT%H%M%SZ"),
-        "eval_a": os.path.basename(a_path),
-        "eval_b": os.path.basename(b_path),
-        "drift": drift,
-        "toxicity_a": tox_a,
-        "toxicity_b": tox_b,
-    }
+    metrics_daily = clean(daily)
+    metrics_weekly = clean(weekly)
+    metrics_monthly = clean(monthly)
 
-    ts = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
-    out_file = os.path.join(output_dir, f"drift_summary_{ts}.json")
-    with open(out_file, "w", encoding="utf-8") as fh:
-        json.dump(summary, fh, indent=2, ensure_ascii=False)
+    # Simple drift summary: compute percent change of risky items last two days (if exists)
+    drift = {"eval_a": None, "eval_b": None, "drift": {"n_risky_change_pct": None}}
+    try:
+        days = sorted(metrics_daily.keys())
+        if len(days) >= 2:
+            a, b = days[-2], days[-1]
+            drift["eval_a"] = a
+            drift["eval_b"] = b
+            a_r = metrics_daily[a]["n_risky"]
+            b_r = metrics_daily[b]["n_risky"]
+            change = None
+            if a_r == 0:
+                change = None
+            else:
+                change = (b_r - a_r) / float(max(1, a_r))
+            drift["drift"]["n_risky_change_pct"] = change
+    except Exception:
+        pass
 
-    logger.info("Wrote drift summary to %s", out_file)
-    return out_file
+    # Save files
+    def write_json(fname, obj):
+        path = os.path.join(PROCESSED_DIR, fname)
+        with open(path, "w", encoding="utf-8") as fh:
+            json.dump(obj, fh, indent=2, ensure_ascii=False)
+        print("Wrote", path)
 
-
-def main():
-    parser = argparse.ArgumentParser(description="DriftMonitor metrics runner: compute drift & toxicity summary.")
-    parser.add_argument("--processed-dir", default="data/live/processed", help="Directory containing eval_*.json files.")
-    parser.add_argument("--output-dir", default=None, help="Where to write drift summary (defaults to processed-dir).")
-    parser.add_argument("--eval-a", default=None, help="Path to eval A JSON (optional).")
-    parser.add_argument("--eval-b", default=None, help="Path to eval B JSON (optional).")
-    args = parser.parse_args()
-
-    path = compute_drift_and_write(
-        processed_dir=args.processed_dir,
-        output_dir=args.output_dir,
-        eval_a_path=args.eval_a,
-        eval_b_path=args.eval_b,
-    )
-    print(f"Drift summary written: {path}")
+    write_json("metrics_daily.json", metrics_daily)
+    write_json("metrics_weekly.json", metrics_weekly)
+    write_json("metrics_monthly.json", metrics_monthly)
+    write_json("drift_summary.json", drift)
 
 
 if __name__ == "__main__":
-    main()
+    aggregate()

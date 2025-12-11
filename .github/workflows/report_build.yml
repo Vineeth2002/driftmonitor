@@ -1,9 +1,5 @@
 name: Build Report (docs -> GitHub Pages)
 
-# Builds the HTML report and commits it to docs/index.html
-# Pages can serve from main/docs when configured.
-# This workflow includes concurrency to avoid overlapping builds.
-
 on:
   workflow_dispatch:
   schedule:
@@ -17,7 +13,6 @@ jobs:
   build:
     name: Build HTML Report
     runs-on: ubuntu-latest
-
     permissions:
       contents: write
 
@@ -58,7 +53,6 @@ jobs:
         run: |
           mkdir -p docs
           cp report/html/report.html docs/index.html
-          # copy assets if the template references them relative to docs/
           if [ -d report/assets ]; then
             rm -rf docs/assets || true
             cp -r report/assets docs/

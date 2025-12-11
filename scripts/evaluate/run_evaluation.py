@@ -8,7 +8,6 @@ Run Evaluation Pipeline for DriftMonitor (enhanced summary)
 - Saves a summary JSON: data/live/processed/eval_summary_<ts>.json
   which contains:
     - counts per sentiment label
-    - counts of neutral/positive/negative
     - number of risky items (safety_score < threshold)
     - top N risky examples (text, safety_score, reason)
 """
@@ -36,8 +35,13 @@ TOP_RISKY_N = 10
 
 
 def evaluate() -> Dict[str, str]:
+    """
+    Run evaluation and summary creation.
+    Returns a dict with keys: 'eval_file' and 'summary_file' (absolute paths).
+    """
     os.makedirs(PROCESSED_DIR, exist_ok=True)
 
+    # Load raw files
     raw_files = sorted(glob.glob(os.path.join(RAW_DIR, "*.json")))
     if not raw_files:
         raise RuntimeError("No raw data found in data/live/raw")
@@ -45,20 +49,22 @@ def evaluate() -> Dict[str, str]:
     logger.info("Found %d raw data files", len(raw_files))
 
     all_items: List[Dict[str, Any]] = []
-    for file in raw_files:
-        loaded = load_latest_json(file)
+    for path in raw_files:
+        loaded = load_latest_json(path)
         results = loaded.get("results", [])
-        all_items.extend(results)
-
+        if isinstance(results, list):
+            all_items.extend(results)
     logger.info("Total combined items: %d", len(all_items))
 
-    # Extract text fields for classification
+    # Extract texts
     texts = extract_text_fields(all_items)
     logger.info("Extracted %d text fields to classify", len(texts))
 
+    # Run classifier
     clf = SafetyClassifier()
     safety_results = clf.score_texts(texts)
 
+    # Timestamps and output paths
     ts = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
     eval_file = os.path.join(PROCESSED_DIR, f"eval_{ts}.json")
     summary_file = os.path.join(PROCESSED_DIR, f"eval_summary_{ts}.json")
@@ -74,21 +80,23 @@ def evaluate() -> Dict[str, str]:
         json.dump(full_output, f, indent=2, ensure_ascii=False)
     logger.info("Saved evaluation output → %s", eval_file)
 
-    # Build summary: counts by sentiment label
+    # Build summary: counts by sentiment label and risky items
     label_counts: Dict[str, int] = {}
     risky_items: List[Dict[str, Any]] = []
     for r in safety_results:
         lbl = (r.get("sentiment_label") or "UNKNOWN").upper()
         label_counts[lbl] = label_counts.get(lbl, 0) + 1
-        # detect risky items by safety_score threshold
         try:
             ss = float(r.get("safety_score", 1.0))
         except Exception:
             ss = 1.0
         if ss < SAFETY_THRESHOLD:
-            risky_items.append({"text": r.get("text", "")[:600], "safety_score": ss, "reason": r.get("reason", "")})
+            risky_items.append({
+                "text": (r.get("text") or "")[:600],
+                "safety_score": ss,
+                "reason": r.get("reason", ""),
+            })
 
-    # Sort risky items by ascending safety score
     risky_items_sorted = sorted(risky_items, key=lambda x: x["safety_score"])[:TOP_RISKY_N]
 
     summary = {
@@ -104,7 +112,7 @@ def evaluate() -> Dict[str, str]:
         json.dump(summary, f, indent=2, ensure_ascii=False)
     logger.info("Saved evaluation summary → %s", summary_file)
 
-    return {"eval_file": eval_file, "summary_file": summary_file}
+    return {"eval_file": os.path.abspath(eval_file), "summary_file": os.path.abspath(summary_file)}
 
 
 if __name__ == "__main__":

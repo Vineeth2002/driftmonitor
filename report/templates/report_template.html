@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DriftMonitor – AI Safety Evaluation Report</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>DriftMonitor – AI Safety Evaluation</h1>
+        <p class="timestamp">Generated at: {{ timestamp }}</p>
+        <p>Total evaluated texts: <strong>{{ n_texts }}</strong></p>
+
+        <h2>Safety Results</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Text</th>
+                    <th>Sentiment</th>
+                    <th>Toxicity</th>
+                    <th>Safety Score</th>
+                    <th>Reason</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.text[:100] }}...</td>
+                    <td>{{ item.sentiment_label }} ({{ item.sentiment_score }})</td>
+                    <td>{{ item.toxicity_score }}</td>
+                    <td>{{ item.safety_score }}</td>
+                    <td>{{ item.reason }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p class="footer">
+            DriftMonitor – AI Drift & Safety Monitoring System
+        </p>
+    </div>
+</body>
+</html>

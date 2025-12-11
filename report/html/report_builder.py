@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 """
 DriftMonitor HTML Report Builder (enhanced summary display)
@@ -9,36 +10,24 @@ DriftMonitor HTML Report Builder (enhanced summary display)
 """
 
 import os
-import json
-import glob
-import logging
-from jinja2 import Environment, FileSystemLoader
-from datetime import datetime
-
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-PROCESSED_DIR = os.path.join(BASE_DIR, "data", "live", "processed")
-OUTPUT_DIR = os.path.join(BASE_DIR, "report", "html")
-TEMPLATE_DIR = os.path.join(BASE_DIR, "report", "templates")
-
-logger = logging.getLogger("driftmonitor.report.html.builder")
-logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+@@ -25,7 +25,6 @@
 
 
 def load_latest_json_by_pattern(dirpath: str, pattern: str):
+
     files = sorted(glob.glob(os.path.join(dirpath, pattern)))
     if not files:
         return None
-    path = files[-1]
-    try:
-        with open(path, "r", encoding="utf-8") as fh:
+@@ -35,57 +34,38 @@
             data = json.load(fh)
         data["_source_file"] = os.path.basename(path)
         return data
     except Exception:
+
         return None
 
-
 def render_html():
+
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     eval_data = load_latest_json_by_pattern(PROCESSED_DIR, "eval_*.json")

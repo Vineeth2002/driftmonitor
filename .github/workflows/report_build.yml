@@ -1,0 +1,49 @@
+name: Build Report
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 2 * * *"   # after collect (01:00) and evaluate (01:30)
+
+jobs:
+  build_report:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install jinja2
+
+      - name: Build HTML Report
+        run: |
+          python -m driftmonitor.report.html.report_builder
+
+      - name: Move report to docs (GitHub Pages)
+        run: |
+          mkdir -p docs
+          cp report/html/report.html docs/index.html
+
+      - name: Commit report update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/index.html || true
+          if git diff --cached --quiet; then
+            echo "No report changes."
+          else
+            git commit -m "Automated report update"
+            git push
+          fi

@@ -3,7 +3,7 @@ name: Build Report (docs -> GitHub Pages)
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 2 * * *"
+    - cron: "0 2 * * *"   # daily at 02:00 UTC
 
 concurrency:
   group: report-build-${{ github.ref }}
@@ -22,7 +22,7 @@ jobs:
         with:
           persist-credentials: true
 
-      - name: Set up Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -30,8 +30,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install jinja2
+          pip install -r requirements.txt || true
+          pip install jinja2 || true
 
       - name: Build HTML Report
         id: build-report

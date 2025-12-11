@@ -104,7 +104,7 @@ The system is engineered to be:
 ## 🚀 Quick Start (Local)
 
 ```bash
-git clone https://github.com/<your-username>/DriftMonitor
+git clone https://github.com/Vineeth2002/DriftMonitor
 cd DriftMonitor
 pip install -r requirements.txt
 

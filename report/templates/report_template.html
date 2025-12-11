@@ -1,85 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <title>DriftMonitor – AI Safety Evaluation Report</title>
-    <link rel="stylesheet" href="../assets/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+      body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin: 24px; color: #111; }
+      h1,h2,h3 { color: #0b3d91; }
+      .container { max-width: 1200px; margin: 0 auto; }
+      table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+      th, td { text-align: left; padding: 8px; border-bottom: 1px solid #eee; }
+      .timestamp { color: #666; }
+      .summary, .drift-summary { margin-bottom: 18px; padding: 12px; border: 1px solid #eee; border-radius: 6px; background: #fafafa; }
+      .risk-text { font-family: monospace; white-space: pre-wrap; }
+    </style>
 </head>
-
 <body>
-    <div class="container">
-        <h1>DriftMonitor – AI Safety Evaluation</h1>
-        <p class="timestamp">Generated at: {{ timestamp }}</p>
+  <div class="container">
+    <h1>DriftMonitor – AI Safety Evaluation</h1>
+    <p class="timestamp">Generated at: {{ timestamp }}</p>
 
-        <!-- Summary section (counts) -->
-        {% if summary %}
-        <section class="summary">
-            <h2>Daily Summary</h2>
-            <p>Total texts evaluated: <strong>{{ summary.n_texts }}</strong></p>
-            <div class="counts">
-                <h3>Sentiment counts</h3>
-                <ul>
-                {% for label, count in summary.label_counts.items() %}
-                    <li><strong>{{ label }}</strong>: {{ count }}</li>
-                {% endfor %}
-                </ul>
-            </div>
-            <div class="risky">
-                <h3>Risk summary</h3>
-                <p>Safety threshold: {{ summary.safety_threshold }}</p>
-                <p>Number of risky items (safety_score &lt; threshold): <strong>{{ summary.n_risky }}</strong></p>
-                {% if summary.risky_examples %}
-                <h4>Top risky examples</h4>
-                <ol>
-                    {% for r in summary.risky_examples %}
-                    <li>
-                        <div class="risk-text">{{ r.text }}</div>
-                        <div class="risk-meta">score: {{ "%.3f"|format(r.safety_score) }} — {{ r.reason }}</div>
-                    </li>
-                    {% endfor %}
-                </ol>
-                {% endif %}
-            </div>
-        </section>
-        {% else %}
-          <p><em>No evaluation summary available yet.</em></p>
+    {% if summary %}
+    <section class="summary">
+      <h2>Daily Summary</h2>
+      <p>Total texts evaluated: <strong>{{ summary.n_texts }}</strong></p>
+      <div class="counts">
+        <h3>Sentiment counts</h3>
+        <ul>
+          {% for label, count in summary.label_counts.items() %}
+            <li><strong>{{ label }}</strong>: {{ count }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="risky">
+        <h3>Risk summary</h3>
+        <p>Safety threshold: {{ summary.safety_threshold }}</p>
+        <p>Number of risky items: <strong>{{ summary.n_risky }}</strong></p>
+        {% if summary.risky_examples %}
+        <h4>Top risky examples</h4>
+        <ol>
+          {% for r in summary.risky_examples %}
+            <li>
+              <div class="risk-text">{{ r.text }}</div>
+              <div class="risk-meta">score: {{ "%.3f"|format(r.safety_score) }} — {{ r.reason }}</div>
+            </li>
+          {% endfor %}
+        </ol>
         {% endif %}
+      </div>
+    </section>
+    {% else %}
+      <p><em>No evaluation summary available yet.</em></p>
+    {% endif %}
 
-        <!-- Drift summary (if available) -->
-        {% if drift_summary %}
-        <section class="drift-summary">
-            <h2>Drift Summary (latest)</h2>
-            <p>Compared files: <strong>{{ drift_summary.eval_a }}</strong> vs <strong>{{ drift_summary.eval_b }}</strong></p>
-            <p><strong>Jensen–Shannon Divergence (normalized)</strong>: {{ "%.4f"|format(drift_summary.drift.jsd) }}</p>
-        </section>
-        {% endif %}
+    {% if drift_summary %}
+    <section class="drift-summary">
+      <h2>Drift Summary (latest)</h2>
+      <p>Compared files: <strong>{{ drift_summary.eval_a }}</strong> vs <strong>{{ drift_summary.eval_b }}</strong></p>
+      <p><strong>Risk change pct</strong>: {{ drift_summary.drift.n_risky_change_pct }}</p>
+    </section>
+    {% endif %}
 
-        <!-- Full safety results preview -->
-        <h2>Safety Results (preview)</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Text (preview)</th>
-                    <th>Sentiment</th>
-                    <th>Toxicity</th>
-                    <th>Safety Score</th>
-                    <th>Reason</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in eval.safety_results %}
-                <tr>
-                    <td class="text-preview">{{ item.text[:120] }}{% if item.text|length > 120 %}...{% endif %}</td>
-                    <td>{{ item.sentiment_label }} <span class="muted">({{ "%.2f"|format(item.sentiment_score) }})</span></td>
-                    <td>{{ "%.2f"|format(item.toxicity_score) }}</td>
-                    <td>{{ "%.3f"|format(item.safety_score) }}</td>
-                    <td class="reason">{{ item.reason }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <h2>Safety Results (preview)</h2>
+    {% if eval %}
+    <table>
+      <thead>
+        <tr><th>Text (preview)</th><th>Sentiment</th><th>Toxicity</th><th>Safety Score</th><th>Reason</th></tr>
+      </thead>
+      <tbody>
+        {% for item in eval.safety_results %}
+        <tr>
+          <td>{{ item.text[:120] }}{% if item.text|length > 120 %}...{% endif %}</td>
+          <td>{{ item.sentiment_label }} <span style="color:#666">({{ "%.2f"|format(item.sentiment_score) }})</span></td>
+          <td>{{ "%.2f"|format(item.toxicity_score) }}</td>
+          <td>{{ "%.3f"|format(item.safety_score) }}</td>
+          <td>{{ item.reason }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+      <p><em>No full evaluation data available.</em></p>
+    {% endif %}
 
-        <p class="footer">DriftMonitor – AI Drift & Safety Monitoring System</p>
-    </div>
+    <!-- Time-series charts -->
+    <section class="timeseries">
+      <h2>Time-series: Sentiment & Risk</h2>
+      <div>
+        <canvas id="sentimentChart" width="900" height="300"></canvas>
+      </div>
+      <div>
+        <canvas id="riskyChart" width="900" height="200"></canvas>
+      </div>
+    </section>
+
+    <p class="footer">DriftMonitor – AI Drift & Safety Monitoring System</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+  (async function() {
+    async function fetchJSON(path) {
+      try {
+        const res = await fetch(path);
+        if (!res.ok) return null;
+        return await res.json();
+      } catch (e) { return null; }
+    }
+    const daily = await fetchJSON('./assets/data/metrics_daily.json');
+    if (!daily) return;
+
+    const dates = Object.keys(daily).sort();
+    const labels = dates;
+    const pos = dates.map(d => daily[d].label_counts.POSITIVE || 0);
+    const neg = dates.map(d => daily[d].label_counts.NEGATIVE || 0);
+    const neu = dates.map(d => daily[d].label_counts.NEUTRAL || 0);
+    const risky = dates.map(d => daily[d].n_risky || 0);
+
+    const ctx = document.getElementById('sentimentChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [
+          { label: 'Positive', data: pos, stack: 's1' },
+          { label: 'Neutral', data: neu, stack: 's1' },
+          { label: 'Negative', data: neg, stack: 's1' }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { position: 'top' } },
+        scales: { x: { stacked: true }, y: { stacked: true, beginAtZero: true } }
+      }
+    });
+
+    const ctx2 = document.getElementById('riskyChart').getContext('2d');
+    new Chart(ctx2, {
+      type: 'line',
+      data: { labels: labels, datasets: [{ label: 'Risky items', data: risky, fill: false }] },
+      options: { responsive: true, plugins: { legend: { position: 'top' } } }
+    });
+  })();
+  </script>
 </body>
 </html>

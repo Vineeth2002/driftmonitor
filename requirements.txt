@@ -1,7 +1,7 @@
-pytrends>=4.8.0   # optional; collector will fallback if missing
-pandas>=2.0       # useful in other modules; optional for collector
+pytrends>=4.8.0   
+pandas>=2.0       
 PyYAML>=6.0
 pytest>=7.0
 requests>=2.28
 transformers>=4.30.0
-torch>=1.13.0   # optional but recommended if using transformers in Actions
+torch>=1.13.0  

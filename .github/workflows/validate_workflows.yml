@@ -1,35 +1,4 @@
-name: Validate Workflow YAMLs
-
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
-
-permissions:
-  contents: read
-
-jobs:
-  yaml-validate:
-    name: Validate workflow YAML files
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Show files being validated
-        run: |
-          echo "Listing .github/workflows:"
-          ls -la .github/workflows || true
-
-      - name: Install Python YAML parser
-        run: |
-          python -m pip install --upgrade pip
-          pip install pyyaml
-
-      - name: Validate each workflow YAML and show errors
-        id: validate
-        run: |
+ run: |
           set -e
           python - <<'PY'
             import glob, yaml, sys, traceback, os, textwrap
@@ -80,9 +49,5 @@ jobs:
                 sys.exit(exit_code)
             else:
                 print("All workflow YAML files parsed OK.")
-          PY
-
-      - name: Fail on invalid YAML (if found)
+          PY - name: Fail on invalid YAML (if found)
         if: failure()
-        run: |
-          echo "One or more workflow files are invalid YAML. See logs above."

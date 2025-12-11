@@ -1,0 +1,22 @@
+[
+  {
+    "id": 12345678,
+    "type": "story",
+    "by": "sample_author",
+    "time": 1700000000,
+    "title": "Sample Hacker News Title: Monitoring AI Safety",
+    "url": "https://example.com/ai-safety",
+    "score": 42,
+    "descendants": 5
+  },
+  {
+    "id": 87654321,
+    "type": "story",
+    "by": "sample_user",
+    "time": 1700000500,
+    "title": "Another Sample Story about LLMs",
+    "url": "https://example.com/llm",
+    "score": 30,
+    "descendants": 2
+  }
+]

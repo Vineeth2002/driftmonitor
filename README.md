@@ -108,7 +108,7 @@ All outputs are committed to the repository for transparency and reproducibility
               data/live/processed/YYYY-MM-DD/
                            │
         ┌──────────────────▼──────────────────┐
-        │            Metrics & Drift Layer     │
+        │    Metrics & Drift Analysis Layer    │
         │                                      │
         │  • Daily risk summaries              │
         │  • Weekly risk aggregation           │

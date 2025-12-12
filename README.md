@@ -74,24 +74,37 @@ All outputs are committed to the repository for transparency and reproducibility
 
 ## 🏗 System Architecture
 
+## 🏗 System Architecture
+
 ```mermaid
 flowchart TD
-    A[GitHub Actions<br/>(Scheduled & Manual Triggers)]
+    A["GitHub Actions (Scheduled and Manual)"]
 
-    A --> B[Data Collectors<br/>• Google Trends (pytrends)<br/>• HackerNews API]
+    A --> B["Data Collectors
+    - Google Trends
+    - HackerNews"]
 
-    B --> C[data/live/raw/YYYY-MM-DD/<br/>Raw JSON Snapshots]
+    B --> C["Raw Data Storage
+    data/live/raw/YYYY-MM-DD"]
 
-    C --> D[Safety Evaluation Layer<br/>• Sentiment Analysis<br/>• Toxicity Detection<br/>• Misuse / Jailbreak Detection]
+    C --> D["Safety Evaluation
+    - Sentiment Analysis
+    - Toxicity Detection
+    - Misuse Detection"]
 
-    D --> E[data/live/processed/YYYY-MM-DD/<br/>Safety Scores & Labels]
+    D --> E["Processed Data
+    data/live/processed/YYYY-MM-DD"]
 
-    E --> F[Metrics & Drift Analysis<br/>• Daily Summaries<br/>• Weekly Aggregation<br/>• Monthly Aggregation]
+    E --> F["Metrics and Drift Analysis
+    - Daily
+    - Weekly
+    - Monthly"]
 
-    F --> G[Reporting Layer<br/>Static HTML Dashboard]
+    F --> G["Reporting Layer
+    Static HTML Dashboard"]
 
-    G --> H[GitHub Pages<br/>Live Public Dashboard]
-
+    G --> H["GitHub Pages
+    Live Public Dashboard"]
 
 ---
 

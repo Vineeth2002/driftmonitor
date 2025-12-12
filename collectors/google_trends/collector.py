@@ -1,38 +1,24 @@
 from pytrends.request import TrendReq
-from datetime import datetime
-import json
-import os
+from datetime import datetime, timezone
 
-def run():
-    pytrends = TrendReq(hl="en-US", tz=360)
+def collect_google_trends(limit=10):
+    pytrends = TrendReq(hl="en-US", tz=0)
 
-    keywords = [
-        "AI jailbreak",
-        "LLM safety",
-        "prompt injection",
-        "AI misuse",
-        "AI alignment"
-    ]
+    pytrends.trending_searches(pn="united_states")
+    df = pytrends.trending_searches(pn="united_states")
 
-    pytrends.build_payload(keywords, timeframe="now 1-d")
-    df = pytrends.interest_over_time()
+    results = []
+    ts = datetime.now(timezone.utc).isoformat()
 
-    today = datetime.utcnow().strftime("%Y-%m-%d")
-    out_dir = f"data/live/raw/{today}"
-    os.makedirs(out_dir, exist_ok=True)
+    for i, row in df.head(limit).iterrows():
+        results.append({
+            "id": f"google:{i}",
+            "source": "google_trends",
+            "title": row[0],
+            "text": row[0],
+            "collected_at": ts,
+            "url": None,
+            "metadata": {}
+        })
 
-    records = []
-    for ts, row in df.iterrows():
-        for k in keywords:
-            records.append({
-                "source": "google_trends",
-                "keyword": k,
-                "value": int(row[k]),
-                "timestamp": ts.isoformat()
-            })
-
-    with open(f"{out_dir}/google_trends.json", "w") as f:
-        json.dump(records, f, indent=2)
-
-if __name__ == "__main__":
-    run()
+    return {"results": results}

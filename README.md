@@ -1,5 +1,6 @@
 # DriftMonitor  
-### AI Drift & Safety Monitoring System (Lightweight · Automated · GitHub-Native)
+### AI Drift & Safety Monitoring System  
+*(Lightweight · Automated · GitHub-Native)*
 
 ![Collect](https://img.shields.io/badge/Collect-Daily-blue)
 ![Evaluate](https://img.shields.io/badge/Evaluate-Daily-green)
@@ -7,26 +8,34 @@
 ![Report](https://img.shields.io/badge/Report-GitHub%20Pages-purple)
 ![CI](https://img.shields.io/badge/CI-GitHub%20Actions-success)
 
+---
+
+## 📌 Overview
+
 **DriftMonitor** is a fully automated AI safety and risk monitoring system designed
-to run entirely on GitHub infrastructure.
+to run entirely on **GitHub infrastructure**.
 
-It collects small batches of real-world public text daily, evaluates them for
-AI safety and misuse signals, tracks risk trends over time, and publishes a
-live HTML dashboard via GitHub Pages.
+It continuously:
+- Collects small batches of **real-world public text**
+- Evaluates them for **AI safety, toxicity, and misuse risks**
+- Tracks **risk drift over time**
+- Publishes a **live HTML dashboard** via GitHub Pages
 
-The system is engineered to be:
+The system is designed to be:
 
 - **Lightweight** — no external servers, no GPUs, no paid APIs  
-- **Reproducible** — deterministic outputs with safe fallbacks  
-- **Research-oriented** — safety scoring, risk trends, drift over time  
-- **Reviewer-friendly** — clean architecture, documented, automated  
-- **Always live** — dashboards update automatically  
+- **Reproducible** — deterministic outputs, versioned data  
+- **Research-oriented** — longitudinal drift & risk tracking  
+- **Reviewer-friendly** — clean architecture, explainable logic  
+- **Always live** — fully automated via GitHub Actions  
 
 ---
 
 ## 🌐 Live Demo (GitHub Pages)
 
 👉 **https://vineeth2002.github.io/driftmonitor/**  
+
+*(Enable via GitHub → Settings → Pages → Source: `/docs`)*
 
 ---
 
@@ -35,70 +44,68 @@ The system is engineered to be:
 ### 🔹 Data Collection
 - Google Trends (via `pytrends`)
 - Hacker News (public Firebase API)
-- Timestamped daily snapshots
+- Daily timestamped snapshots
 - Append-only historical storage
 
 ### 🔹 Safety Evaluation
 - Hybrid **SafetyClassifier** combining:
-  - Lightweight sentiment analysis (DistilBERT)
+  - Sentiment analysis (DistilBERT)
   - Rule-based toxicity detection
   - Misuse & jailbreak pattern detection
 - Produces:
   - Safety score (0–1)
-  - Risk label: SAFE / WARNING / RISKY
+  - Risk label: **SAFE / WARNING / RISKY**
   - Human-readable explanation
 
-### 🔹 Risk & Trend Metrics
-- Daily risk summaries
+### 🔹 Risk & Drift Metrics
+- Daily safety summaries
 - Weekly risk aggregation
 - Monthly risk aggregation
-- Enables safety drift analysis over time
+- Enables longitudinal safety drift analysis
 
 ### 🔹 Reporting
 - Static HTML dashboard
-- Daily / weekly / monthly sections
-- Auto-published via GitHub Pages
+- Daily / Weekly / Monthly views
+- Automatically published via GitHub Pages
 
 ### 🔹 Automation
 All stages are automated using GitHub Actions:
 
-- **Daily Collect** → fetch public data
-- **Daily Evaluate** → compute safety results
-- **Weekly Metrics** → aggregate risk trends
-- **Monthly Metrics** → long-term trends
-- **Report Build** → publish dashboard
+- **Daily Collect** → fetch public data  
+- **Daily Evaluate** → compute safety results  
+- **Weekly Metrics** → aggregate trends  
+- **Monthly Metrics** → long-term drift  
+- **Report Build** → publish dashboard  
 
-All outputs are committed to the repository for transparency and reproducibility.
+All artifacts are committed to the repository for transparency and reproducibility.
 
 ---
 
 ## 🏗 System Architecture
 
-## 🏗 System Architecture
-
 ```mermaid
 flowchart TD
-    A["GitHub Actions (Scheduled and Manual)"]
+    A["GitHub Actions (Scheduled and Manual Triggers)"]
 
     A --> B["Data Collectors
-    - Google Trends
-    - HackerNews"]
+    - Google Trends (pytrends)
+    - HackerNews API"]
 
     B --> C["Raw Data Storage
     data/live/raw/YYYY-MM-DD"]
 
-    C --> D["Safety Evaluation
+    C --> D["Safety Evaluation Layer
     - Sentiment Analysis
     - Toxicity Detection
-    - Misuse Detection"]
+    - Misuse and Jailbreak Detection"]
 
-    D --> E["Processed Data
+    D --> E["Processed Data Storage
     data/live/processed/YYYY-MM-DD"]
 
     E --> F["Metrics and Drift Analysis
-    - Daily
-    - Weekly
-    - Monthly"]
+    - Daily Summaries
+    - Weekly Aggregation
+    - Monthly Aggregation"]
 
     F --> G["Reporting Layer
     Static HTML Dashboard"]
@@ -106,20 +113,3 @@ flowchart TD
     G --> H["GitHub Pages
     Live Public Dashboard"]
 
----
-
-## 🚀 Quick Start (Local)
-
-```bash
-git clone https://github.com/Vineeth2002/driftmonitor
-cd driftmonitor
-pip install -r requirements.txt
-
-# Run collectors (real data)
-python scripts/collect/run_collectors.py
-
-# Run daily safety evaluation
-python scripts/evaluate/run_safety_eval.py
-
-# Generate dashboard
-python -m driftmonitor.report.html.report_builder

@@ -1,0 +1,22 @@
+{
+  "results": [
+    {
+      "id": "sim:1",
+      "source": "google_trends",
+      "collected_at": "2025-12-12T07:00:00Z",
+      "title": "How to jailbreak LLM",
+      "text": "Step by step instructions to bypass filter: ...",
+      "url": "https://example.com/bad",
+      "metadata": {}
+    },
+    {
+      "id": "sim:2",
+      "source": "hackernews",
+      "collected_at": "2025-12-12T07:05:00Z",
+      "title": "Research: safer reward design",
+      "text": "Technical paper on reward design for safety.",
+      "url": "https://news.ycombinator.com/item?id=111",
+      "metadata": {}
+    }
+  ]
+}

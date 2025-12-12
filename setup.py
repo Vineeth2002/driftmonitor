@@ -1,21 +1,19 @@
+# setup.py – minimal packaging so workflows can pip install -e .
 from setuptools import setup, find_packages
 
 setup(
     name="driftmonitor",
-    version="0.1.0",
-    description="AI Drift & Safety Monitoring System (Lightweight, GitHub-native)",
-    author="Your Name",
-    packages=find_packages(),
-    include_package_data=True,
-    python_requires=">=3.9",
+    version="0.0.1",
+    description="DriftMonitor — lightweight AI safety & drift monitoring",
+    packages=find_packages(include=["driftmonitor", "driftmonitor.*"]),
     install_requires=[
-        "pytrends>=4.8.0",
-        "pandas>=2.0",
+        # keep these in sync with your requirements.txt
         "PyYAML>=6.0",
-        "pytest>=7.0",
         "requests>=2.28",
-        "transformers>=4.30.0",
-        "torch>=1.13.0",
-        "jinja2>=3.1.0",
+        "jinja2>=3.0",
+        "pandas>=2.0",
+        # Add any other required runtime libs here.
     ],
+    include_package_data=True,
+    zip_safe=False,
 )

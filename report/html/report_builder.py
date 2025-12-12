@@ -1,70 +1,139 @@
+from pathlib import Path
 import json
-import os
 from datetime import datetime
+from jinja2 import Template
 
-BASE = "data/live/processed"
-OUT = "docs"
+PROCESSED_DIR = Path("data/live/processed")
+DOCS_DIR = Path("docs")
+DOCS_DIR.mkdir(exist_ok=True)
 
-def load_json(path):
-    if os.path.isfile(path):
-        with open(path, encoding="utf-8") as f:
-            return json.load(f)
-    return None
+records = []
 
-def main():
-    os.makedirs(OUT, exist_ok=True)
+# Read all daily processed data
+for day_dir in sorted(PROCESSED_DIR.glob("*")):
+    file = day_dir / "safety_eval.json"
+    if file.exists():
+        daily = json.loads(file.read_text())
+        records.extend(daily)
 
-    today = datetime.utcnow().strftime("%Y-%m-%d")
+# Summary metrics
+total = len(records)
+safe = sum(1 for r in records if r["risk_label"] == "SAFE")
+warning = sum(1 for r in records if r["risk_label"] == "WARNING")
+risky = sum(1 for r in records if r["risk_label"] == "RISKY")
+avg_score = round(
+    sum(r["safety_score"] for r in records) / total, 2
+) if total else 0.0
 
-    daily = load_json(f"{BASE}/{today}/safety_summary.json")
-    weekly_files = sorted(os.listdir(f"{BASE}/weekly")) if os.path.isdir(f"{BASE}/weekly") else []
-    monthly_files = sorted(os.listdir(f"{BASE}/monthly")) if os.path.isdir(f"{BASE}/monthly") else []
-
-    weekly = load_json(f"{BASE}/weekly/{weekly_files[-1]}") if weekly_files else None
-    monthly = load_json(f"{BASE}/monthly/{monthly_files[-1]}") if monthly_files else None
-
-    html = f"""
+# HTML Template
+template = Template("""
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DriftMonitor – AI Safety Dashboard</title>
-  <style>
-    body {{ font-family: Arial; margin: 40px; }}
-    h1 {{ color: #222; }}
-    .card {{ border: 1px solid #ccc; padding: 20px; margin-bottom: 20px; }}
-    .safe {{ color: green; }}
-    .warn {{ color: orange; }}
-    .risk {{ color: red; }}
-  </style>
+<title>DriftMonitor Dashboard</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  background: #fafafa;
+}
+h1 { margin-bottom: 5px; }
+.subtitle { color: #555; margin-bottom: 30px; }
+
+.cards {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  flex: 1;
+  text-align: center;
+}
+.card h2 { margin: 0; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+th {
+  background: #f0f0f0;
+}
+.safe { color: green; font-weight: bold; }
+.warning { color: orange; font-weight: bold; }
+.risky { color: red; font-weight: bold; }
+
+footer {
+  margin-top: 40px;
+  color: #777;
+  font-size: 14px;
+}
+</style>
 </head>
+
 <body>
 
-<h1>DriftMonitor – AI Safety Dashboard</h1>
-<p>Last updated: {datetime.utcnow().isoformat()} UTC</p>
-
-<div class="card">
-<h2>Daily Summary ({today})</h2>
-<pre>{json.dumps(daily, indent=2) if daily else "No daily data yet"}</pre>
+<h1>DriftMonitor</h1>
+<div class="subtitle">
+Daily, Weekly, Monthly AI Safety Monitoring<br>
+Last updated: {{ updated }}
 </div>
 
-<div class="card">
-<h2>Weekly Summary</h2>
-<pre>{json.dumps(weekly, indent=2) if weekly else "No weekly data yet"}</pre>
+<div class="cards">
+  <div class="card"><h2>{{ total }}</h2>Total Items</div>
+  <div class="card"><h2>{{ safe }}</h2>SAFE</div>
+  <div class="card"><h2>{{ warning }}</h2>WARNING</div>
+  <div class="card"><h2>{{ risky }}</h2>RISKY</div>
+  <div class="card"><h2>{{ avg_score }}</h2>Avg Safety</div>
 </div>
 
-<div class="card">
-<h2>Monthly Summary</h2>
-<pre>{json.dumps(monthly, indent=2) if monthly else "No monthly data yet"}</pre>
-</div>
+<h2>Latest Safety Evaluations</h2>
+
+<table>
+<tr>
+  <th>Date</th>
+  <th>Source</th>
+  <th>Title</th>
+  <th>Safety Score</th>
+  <th>Risk</th>
+</tr>
+{% for r in records %}
+<tr>
+  <td>{{ r.date }}</td>
+  <td>{{ r.source }}</td>
+  <td>{{ r.title }}</td>
+  <td>{{ "%.2f"|format(r.safety_score) }}</td>
+  <td class="{{ r.risk_label|lower }}">{{ r.risk_label }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<footer>
+Auto-updated via GitHub Actions · 
+<a href="https://github.com/Vineeth2002/driftmonitor">GitHub Repo</a>
+</footer>
 
 </body>
 </html>
-"""
+""")
 
-    with open(f"{OUT}/index.html", "w", encoding="utf-8") as f:
-        f.write(html)
+html = template.render(
+    records=records,
+    total=total,
+    safe=safe,
+    warning=warning,
+    risky=risky,
+    avg_score=avg_score,
+    updated=datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
+)
 
-    print("Dashboard generated at docs/index.html")
-
-if __name__ == "__main__":
-    main()
+(DOCS_DIR / "index.html").write_text(html)
+print("✅ Dashboard built at docs/index.html")

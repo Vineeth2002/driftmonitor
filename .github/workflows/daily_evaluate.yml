@@ -1,3 +1,4 @@
+---
 name: Daily Evaluation
 
 on:
@@ -7,7 +8,7 @@ on:
     paths:
       - 'data/live/raw/**'
   schedule:
-    - cron: '0 2 * * *'
+    - cron: "0 2 * * *"
   workflow_dispatch:
 
 concurrency:
@@ -40,6 +41,7 @@ jobs:
             pip install -r requirements.txt || true
             echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
           fi
+
           pip install jinja2 || true
 
       - name: Debug: show repo & attempt import
@@ -47,12 +49,15 @@ jobs:
           echo "PWD: $(pwd)"
           echo "Top-level files:"
           ls -la
+
           echo "driftmonitor folder (if present):"
           ls -la driftmonitor || true
+
           python - <<'PY'
 import sys, importlib
 print("Python:", sys.version.splitlines()[0])
-print("sys.path head:", sys.path[:6])
+print("sys.path:", sys.path[:6])
+
 try:
     import driftmonitor
     print("driftmonitor imported OK:", getattr(driftmonitor, "__file__", repr(driftmonitor)))
@@ -70,7 +75,9 @@ PY
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
           git add data/live/processed || true
+
           if git diff --quiet --staged; then
             echo "No new processed files to commit."
           else

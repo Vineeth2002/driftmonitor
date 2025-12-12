@@ -14,6 +14,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,13 +26,18 @@ jobs:
         with:
           python-version: "3.11"
 
+
       - name: Ensure report exists
         run: |
           if [ ! -f report/html/report.html ]; then
             echo "Report missing — nothing to deploy. Exiting."
             exit 0
+
           fi
           echo "Report found."
+
+
+
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4

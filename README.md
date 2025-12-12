@@ -21,7 +21,7 @@ The system is engineered to be:
 ---
 
 ## 🌐 Live Demo (GitHub Pages)
-👉 **https://Vineeth2002.github.io/DriftMonitor/**  
+👉 **https://vineeth2002.github.io/driftmonitor/**  
 (Works after enabling GitHub Pages → source: `/docs`)
 
 ---

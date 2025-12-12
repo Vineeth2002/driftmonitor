@@ -9,18 +9,38 @@ on:
     types:
       - completed
 
+
+
+
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+
+
+
+
+
+
+
+
       - name: Ensure report exists
         run: |
           if [ ! -f report/html/report.html ]; then
             echo "No report to deploy"
             exit 0
+
           fi
+
+
+
+
+
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:

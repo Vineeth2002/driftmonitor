@@ -1,63 +1,52 @@
 import os
 import json
 from datetime import datetime
-from driftmonitor.benchmark.classifiers.safety_classifier import classify
+from driftmonitor.benchmark.classifiers.safety_classifier import SafetyClassifier
 
 RAW_DIR = "data/live/raw"
-OUT_BASE = "data/live/processed"
-
-def load_today_items():
-    today = datetime.utcnow().strftime("%Y-%m-%d")
-    day_dir = os.path.join(RAW_DIR, today)
-
-    items = []
-    if not os.path.isdir(day_dir):
-        return today, items
-
-    for f in os.listdir(day_dir):
-        if f.endswith(".json"):
-            with open(os.path.join(day_dir, f), encoding="utf-8") as fh:
-                data = json.load(fh)
-                items.extend(data.get("items", []))
-
-    return today, items
-
+OUT_DIR = "data/live/processed"
 
 def main():
-    today, items = load_today_items()
-    out_dir = os.path.join(OUT_BASE, today)
-    os.makedirs(out_dir, exist_ok=True)
+    today = datetime.utcnow().strftime("%Y-%m-%d")
+    raw_day = os.path.join(RAW_DIR, today)
+    out_day = os.path.join(OUT_DIR, today)
 
-    evaluated = []
-    counts = {"SAFE": 0, "WARNING": 0, "RISKY": 0}
+    if not os.path.isdir(raw_day):
+        print("No raw data for today:", today)
+        return
 
-    for item in items:
-        text = (item.get("title", "") + " " + item.get("text", "")).strip()
-        result = classify(text)
-        counts[result["risk_label"]] += 1
+    os.makedirs(out_day, exist_ok=True)
+    clf = SafetyClassifier()
 
-        evaluated.append({
-            "source": item.get("source"),
-            "title": item.get("title"),
-            "risk_score": result["risk_score"],
-            "risk_label": result["risk_label"],
-            "reason": result["reason"],
-        })
+    texts = []
+    sources = []
 
-    eval_file = os.path.join(out_dir, "safety_eval.json")
-    summary_file = os.path.join(out_dir, "safety_summary.json")
+    for f in os.listdir(raw_day):
+        if f.endswith(".json"):
+            with open(os.path.join(raw_day, f), encoding="utf-8") as fh:
+                data = json.load(fh)
+                for item in data.get("items", []):
+                    text = f"{item.get('title','')} {item.get('text','')}".strip()
+                    texts.append(text)
+                    sources.append(item.get("source", "unknown"))
 
-    with open(eval_file, "w", encoding="utf-8") as f:
-        json.dump(evaluated, f, indent=2)
+    results = clf.score_texts(texts)
 
-    with open(summary_file, "w", encoding="utf-8") as f:
+    summary = {"SAFE": 0, "WARNING": 0, "RISKY": 0}
+    for r in results:
+        summary[r["risk_label"]] += 1
+
+    with open(os.path.join(out_day, "safety_eval.json"), "w") as f:
+        json.dump(results, f, indent=2)
+
+    with open(os.path.join(out_day, "safety_summary.json"), "w") as f:
         json.dump({
             "date": today,
-            "total_items": len(items),
-            "risk_breakdown": counts,
+            "total_items": len(results),
+            "risk_breakdown": summary
         }, f, indent=2)
 
-    print("Safety evaluation complete for", today)
+    print("Safety evaluation completed for", today)
 
 if __name__ == "__main__":
     main()

@@ -1,44 +1,26 @@
-name: Deploy Report to GitHub Pages (gh-pages)
+---
+name: Deploy Report to GitHub Pages
 
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ["Build Report (docs -> GitHub Pages)"]
+    workflows:
+      - Build Report (docs -> GitHub Pages)
     types:
       - completed
-
-concurrency:
-  group: pages-deploy-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          persist-credentials: true
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-
       - name: Ensure report exists
         run: |
           if [ ! -f report/html/report.html ]; then
-            echo "Report missing — nothing to deploy. Exiting."
+            echo "No report to deploy"
             exit 0
-
           fi
-          echo "Report found."
-
-
-
-
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:

@@ -1,48 +1,35 @@
 ---
-name: Deploy Report to GitHub Pages
+name: Deploy GitHub Pages
 
 on:
   workflow_dispatch:
   workflow_run:
     workflows:
-      - Build Report (docs -> GitHub Pages)
+      - Build Report
     types:
       - completed
 
-
-
-
+concurrency:
+  group: pages-deploy-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-
-
-
-
-
-
-
-
-      - name: Ensure report exists
+      - name: Verify report exists
         run: |
-          if [ ! -f report/html/report.html ]; then
-            echo "No report to deploy"
+          if [ ! -f docs/index.html ]; then
+            echo "No report to deploy. Exiting cleanly."
             exit 0
-
           fi
 
-
-
-
-
-      - name: Deploy to gh-pages
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./report/html
+          publish_dir: ./docs

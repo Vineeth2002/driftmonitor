@@ -7,12 +7,10 @@ setup(
     description="DriftMonitor — lightweight AI safety & drift monitoring",
     packages=find_packages(include=["driftmonitor", "driftmonitor.*"]),
     install_requires=[
-        # keep these in sync with your requirements.txt
         "PyYAML>=6.0",
         "requests>=2.28",
         "jinja2>=3.0",
         "pandas>=2.0",
-        # Add any other required runtime libs here.
     ],
     include_package_data=True,
     zip_safe=False,

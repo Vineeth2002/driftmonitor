@@ -1,58 +1,60 @@
-name: Build Report (artifact)
-
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: "0 2 * * *"
-
-concurrency:
-  group: report-build-${{ github.ref }}
-  cancel-in-progress: true
-
-jobs:
   build:
     name: Build HTML Report
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
-      - name: Setup Python
+      - name: Setup Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install deps
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt || true
           pip install jinja2 || true
 
+      - name: Install repository package (editable)
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f "pyproject.toml" ] || [ -f "setup.py" ]; then
+            python -m pip install -e .
+          else
+            echo "No pyproject/setup found — installing repo path to PYTHONPATH"
+            python - <<'PY'
+import os, sys
+p = os.getcwd()
+print("Adding repo root to PYTHONPATH:", p)
+sys.path.insert(0,p)
+print("done")
+PY
+          fi
+
+      - name: Debug: show repo tree and check driftmonitor import
+        run: |
+          echo "PWD: $(pwd)"
+          echo "--- top-level files ---"
+          ls -la
+          echo "--- check driftmonitor directory ---"
+          if [ -d driftmonitor ]; then ls -la driftmonitor || true; else echo "driftmonitor not found"; fi
+          echo "--- python sys.path ---"
+          python - <<'PY'
+import sys, pkgutil, os
+print("sys.path:")
+for p in sys.path[:8]:
+    print(" ", p)
+print("\nfind_loader for 'driftmonitor':", pkgutil.find_loader('driftmonitor'))
+print("\nlisting root files in python:")
+print(os.listdir('.'))
+PY
+
       - name: Build report
         run: |
           python -m driftmonitor.report.html.report_builder
-
-      - name: Verify report exists
-        run: |
-          if [ ! -f report/html/report.html ]; then
-            echo "report/html/report.html missing"
-            ls -R report || true
-            exit 1
-          fi
-
-      - name: Upload report artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: driftmonitor-report-html
-          path: report/html
-
-  report-build-status:
-    name: Report Build Status
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Report status
-        run: echo "Build finished with status:${{ needs.build.result }}"

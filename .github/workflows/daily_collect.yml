@@ -1,59 +1,36 @@
+---
 name: Daily Data Collection
 
 on:
-  workflow_dispatch:     # allow manual triggering
   schedule:
-    - cron: "0 1 * * *"  # runs daily at 01:00 UTC
+    - cron: "0 2 * * *"
+  workflow_dispatch:
 
 jobs:
   collect:
-    name: Run Collectors
     runs-on: ubuntu-latest
-
     permissions:
-      contents: write    # required to push data updates back to the repo
+      contents: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Google Trends Collector
+      - name: Run collectors
         run: |
-          echo "=== Running Google Trends Collector ==="
-          python -m driftmonitor.collectors.google_trends.cli \
-            --output-dir data/live/raw || echo "Google Trends failed, fallback sample used."
+          python scripts/collect/run_collectors.py
 
-      - name: Run HackerNews Collector
+      - name: Commit raw data
         run: |
-          echo "=== Running HackerNews Collector ==="
-          python -m driftmonitor.collectors.hackernews.cli \
-            --fetch-top-n 100 \
-            --output-dir data/live/raw || echo "HackerNews failed, fallback sample used."
-
-      - name: View collected files
-        run: |
-          echo "=== Listing collected data ==="
-          ls -R data/live/raw
-
-      - name: Commit updated data
-        run: |
-          echo "=== Committing collected data to repository ==="
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/live/raw || true
-          if git diff --cached --quiet; then
-            echo "No new data to commit."
-          else
-            git commit -m "Daily data update (automated)"
-            git push
-          fi
+          git add data/live/raw
+          git commit -m "Daily raw data collection" || echo "No changes"
+          git push

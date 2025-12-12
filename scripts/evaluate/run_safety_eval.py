@@ -1,48 +1,31 @@
-from datetime import datetime
-from pathlib import Path
 import json
-
+import os
+from datetime import datetime
 from driftmonitor.benchmark.classifiers.safety_classifier import SafetyClassifier
 
 TODAY = datetime.utcnow().strftime("%Y-%m-%d")
+RAW_DIR = f"data/live/raw/{TODAY}"
+OUT_DIR = f"data/live/processed/{TODAY}"
+os.makedirs(OUT_DIR, exist_ok=True)
 
-RAW_DIR = Path(f"data/live/raw/{TODAY}")
-OUT_DIR = Path(f"data/live/processed/{TODAY}")
-OUT_DIR.mkdir(parents=True, exist_ok=True)
+clf = SafetyClassifier()
 
-classifier = SafetyClassifier()
+results = []
 
-def load_texts():
-    texts = []
+for file in os.listdir(RAW_DIR):
+    with open(os.path.join(RAW_DIR, file)) as f:
+        items = json.load(f)
 
-    for file in RAW_DIR.glob("*.json"):
-        data = json.load(open(file))
-        for item in data.get("results", []):
-            texts.append({
-                "source": item["source"],
-                "title": item["title"],
-                "text": item["text"]
-            })
-    return texts
-
-def main():
-    items = load_texts()
-    results = []
-
-    scores = classifier.score_texts([i["text"] for i in items])
+    texts = [i["title"] for i in items]
+    scores = clf.score_texts(texts)
 
     for item, score in zip(items, scores):
         results.append({
-            "date": TODAY,
-            "source": item["source"],
-            "title": item["title"],
+            **item,
             **score
         })
 
-    with open(OUT_DIR / "safety_results.json", "w") as f:
-        json.dump(results, f, indent=2)
+with open(f"{OUT_DIR}/evaluated.json", "w") as f:
+    json.dump(results, f, indent=2)
 
-    print(f"[OK] Safety evaluation completed for {TODAY}")
-
-if __name__ == "__main__":
-    main()
+print(f"Evaluated {len(results)} items")

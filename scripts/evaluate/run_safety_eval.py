@@ -1,52 +1,19 @@
-import os
+from datetime import date
+from pathlib import Path
 import json
-from datetime import datetime
-from driftmonitor.benchmark.classifiers.safety_classifier import SafetyClassifier
 
-RAW_DIR = "data/live/raw"
-OUT_DIR = "data/live/processed"
+TODAY = date.today().isoformat()
 
-def main():
-    today = datetime.utcnow().strftime("%Y-%m-%d")
-    raw_day = os.path.join(RAW_DIR, today)
-    out_day = os.path.join(OUT_DIR, today)
+RAW_DIR = Path("data/live/raw") / TODAY
+OUT_DIR = Path("data/live/processed") / TODAY
+OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    if not os.path.isdir(raw_day):
-        print("No raw data for today:", today)
-        return
+# Load raw
+items = []
+for file in RAW_DIR.glob("*.json"):
+    with open(file) as f:
+        items.extend(json.load(f)["results"])
 
-    os.makedirs(out_day, exist_ok=True)
-    clf = SafetyClassifier()
-
-    texts = []
-    sources = []
-
-    for f in os.listdir(raw_day):
-        if f.endswith(".json"):
-            with open(os.path.join(raw_day, f), encoding="utf-8") as fh:
-                data = json.load(fh)
-                for item in data.get("items", []):
-                    text = f"{item.get('title','')} {item.get('text','')}".strip()
-                    texts.append(text)
-                    sources.append(item.get("source", "unknown"))
-
-    results = clf.score_texts(texts)
-
-    summary = {"SAFE": 0, "WARNING": 0, "RISKY": 0}
-    for r in results:
-        summary[r["risk_label"]] += 1
-
-    with open(os.path.join(out_day, "safety_eval.json"), "w") as f:
-        json.dump(results, f, indent=2)
-
-    with open(os.path.join(out_day, "safety_summary.json"), "w") as f:
-        json.dump({
-            "date": today,
-            "total_items": len(results),
-            "risk_breakdown": summary
-        }, f, indent=2)
-
-    print("Safety evaluation completed for", today)
-
-if __name__ == "__main__":
-    main()
+# Run SafetyClassifier → results
+with open(OUT_DIR / "safety_results.json", "w") as f:
+    json.dump(results, f, indent=2)

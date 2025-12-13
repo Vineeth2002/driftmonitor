@@ -1,1 +1,4 @@
+"""
+DriftMonitor scripts package.
+"""
 

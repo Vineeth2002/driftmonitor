@@ -1,23 +1,6 @@
-[build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
-
-[project]
-name = "driftmonitor"
-version = "1.0.0"
-description = "AI Safety & Risk Drift Monitoring Platform"
-readme = "README.md"
-requires-python = ">=3.10"
-license = {text = "MIT"}
-
-authors = [
-  { name="Vineeth", email="vineeth@example.com" }
-]
-
 dependencies = [
   "requests>=2.31.0",
   "pandas>=2.0",
   "pytrends>=4.9.0",
-  "transformers>=4.30.0",
-  "torch>=1.13.0",
+  "PyYAML>=6.0"
 ]

@@ -1,53 +1,47 @@
 import json
-import os
+from pathlib import Path
 from datetime import datetime, timezone
 
 from driftmonitor.benchmark.classifiers.safety_classifier import SafetyClassifier
 
-RAW_BASE = "data/live/raw"
-PROC_BASE = "data/live/processed"
-
-def today_dir():
-    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
-
-def load_json(path):
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-def save_json(path, data):
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
+RAW_BASE = Path("data/live/raw")
+OUT_BASE = Path("data/live/processed")
 
 def main():
-    date = today_dir()
-    raw_dir = f"{RAW_BASE}/{date}"
-    out_dir = f"{PROC_BASE}/{date}"
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    raw_dir = RAW_BASE / today
+    out_dir = OUT_BASE / today
+    out_dir.mkdir(parents=True, exist_ok=True)
 
-    os.makedirs(out_dir, exist_ok=True)
-
-    classifier = SafetyClassifier()
-
+    clf = SafetyClassifier()
     evaluated = []
 
     for fname in ["google_trends.json", "hackernews.json"]:
-        path = f"{raw_dir}/{fname}"
-        if not os.path.exists(path):
+        path = raw_dir / fname
+        if not path.exists():
             continue
 
-        data = load_json(path)
+        data = json.loads(path.read_text(encoding="utf-8"))
         texts = [r["text"] for r in data["results"]]
-
-        scores = classifier.score_texts(texts)
+        scores = clf.score_texts(texts)
 
         for r, s in zip(data["results"], scores):
-            evaluated.append({
-                **r,
-                **s,
-                "evaluated_at": datetime.now(timezone.utc).isoformat()
-            })
+            evaluated.append({**r, **s})
 
-    save_json(f"{out_dir}/evaluated.json", evaluated)
-    print(f"[EVALUATE] Saved {len(evaluated)} items")
+    (out_dir / "evaluated.json").write_text(
+        json.dumps(
+            {
+                "date": today,
+                "total": len(evaluated),
+                "items": evaluated,
+            },
+            indent=2,
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+
+    print(f"[OK] Evaluated {len(evaluated)} items")
 
 if __name__ == "__main__":
     main()

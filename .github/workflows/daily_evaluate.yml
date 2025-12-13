@@ -1,4 +1,4 @@
-name: Daily Evaluation
+name: Daily Evaluate
 
 on:
   schedule:
@@ -16,18 +16,16 @@ jobs:
         with:
           python-version: "3.11"
 
-      - run: pip install -r requirements.txt
-
-      - name: Set PYTHONPATH
-        run: echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
       - name: Run safety evaluation
         run: python scripts/evaluate/run_safety_eval.py
 
-      - name: Commit evaluation data
+      - name: Commit processed data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/live/processed
-          git commit -m "Daily evaluation $(date -u)" || echo "No changes"
+          git commit -m "data: daily safety evaluation" || echo "No changes"
           git push

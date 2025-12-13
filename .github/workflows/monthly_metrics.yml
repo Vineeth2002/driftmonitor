@@ -2,13 +2,12 @@ name: Monthly Metrics
 
 on:
   schedule:
-    - cron: "25 17 1 * *"   # 1st of month 10:55 PM IST
+    - cron: "55 19 1 * *"   # 1st of month 01:25 AM IST
   workflow_dispatch:
 
 jobs:
   monthly:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -17,12 +16,4 @@ jobs:
 
       - run: pip install -r requirements.txt
       - run: echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
-
       - run: python scripts/metrics/monthly_metrics.py
-
-      - run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/live/processed/monthly
-          git commit -m "chore: monthly metrics $(date -u)" || echo "No changes"
-          git push

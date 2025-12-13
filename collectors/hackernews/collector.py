@@ -1,58 +1,57 @@
-import requests
 import logging
+import requests
 from datetime import datetime
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.INFO)
 
-TOP_STORIES = "https://hacker-news.firebaseio.com/v0/topstories.json"
-ITEM_URL = "https://hacker-news.firebaseio.com/v0/item/{}.json"
+HN_TOP_STORIES = "https://hacker-news.firebaseio.com/v0/topstories.json"
+HN_ITEM = "https://hacker-news.firebaseio.com/v0/item/{}.json"
 
-def collect_hackernews(limit: int = 20):
+
+def collect_hackernews(limit: int = 10):
     """
-    Collect top Hacker News stories.
-
-    Returns:
-        list[dict]
+    Collect HackerNews top stories.
+    Safe fallback included.
     """
     collected_at = datetime.utcnow().isoformat() + "Z"
 
     try:
-        ids = requests.get(TOP_STORIES, timeout=10).json()
+        ids = requests.get(HN_TOP_STORIES, timeout=10).json()[:limit]
         results = []
 
-        for story_id in ids[:limit]:
-            item = requests.get(ITEM_URL.format(story_id), timeout=10).json()
-            if not item or "title" not in item:
+        for story_id in ids:
+            item = requests.get(HN_ITEM.format(story_id), timeout=10).json()
+            if not item:
                 continue
 
-            results.append({
-                "source": "hackernews",
-                "id": item.get("id"),
-                "title": item.get("title"),
-                "url": item.get("url"),
-                "score": item.get("score", 0),
-                "collected_at": collected_at,
-            })
+            results.append(
+                {
+                    "id": item.get("id"),
+                    "title": item.get("title", ""),
+                    "text": item.get("title", ""),
+                    "url": item.get("url", ""),
+                    "score": item.get("score", 0),
+                }
+            )
 
-        if not results:
-            return _fallback(collected_at)
-
-        return results
-
-    except Exception as e:
-        logger.exception("HackerNews failed, using fallback")
-        return _fallback(collected_at)
-
-
-def _fallback(collected_at: str):
-    return [
-        {
+        return {
             "source": "hackernews",
-            "id": 0,
-            "title": "Fallback: AI safety discussion",
-            "url": "https://news.ycombinator.com/",
-            "score": 0,
             "collected_at": collected_at,
+            "results": results,
         }
-    ]
+
+    except Exception as exc:
+        logger.exception("HackerNews failed, fallback used: %s", exc)
+        return {
+            "source": "hackernews",
+            "collected_at": collected_at,
+            "results": [
+                {
+                    "id": "fallback",
+                    "title": "Sample HackerNews item",
+                    "text": "Sample HackerNews item",
+                    "url": "",
+                    "score": 0,
+                }
+            ],
+        }

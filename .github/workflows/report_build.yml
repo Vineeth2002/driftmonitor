@@ -1,9 +1,14 @@
-name: Build Dashboard
+name: Build & Deploy Report
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: "00 18 * * *"   # 11:30 PM IST
+    - cron: "50 17 * * *"   # 11:20 PM IST
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build:
@@ -16,15 +21,19 @@ jobs:
         with:
           python-version: "3.11"
 
-      - run: pip install -r requirements.txt
-
-      - name: Set PYTHONPATH
-        run: echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
       - name: Build dashboard
-        run: python report/html/report_builder.py
+        run: python -m driftmonitor.report.html.report_builder
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/deploy-pages@v4

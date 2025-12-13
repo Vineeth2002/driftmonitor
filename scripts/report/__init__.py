@@ -1,1 +1,4 @@
+"""
+Report generation scripts.
+"""
 

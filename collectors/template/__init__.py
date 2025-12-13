@@ -1,1 +1,4 @@
+"""
+Template collector package.
+"""
 

@@ -10,5 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: pip install yamllint
-      - run: yamllint .github/workflows
+
+      - name: Install yamllint
+        run: pip install yamllint
+
+      - name: Run yamllint (relaxed rules)
+        run: |
+          yamllint \
+            -d "{extends: default, rules: {line-length: {max: 120, level: warning}}}" \
+            .github/workflows

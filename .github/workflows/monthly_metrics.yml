@@ -16,13 +16,13 @@ jobs:
           python-version: "3.11"
 
       - run: pip install -r requirements.txt
-      - run: pip install -e .
+      - run: echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
 
-      - run: python scripts/metrics/run_monthly_metrics.py
+      - run: python scripts/metrics/monthly_metrics.py
 
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add metrics
-          git commit -m "Monthly metrics $(date -u)" || echo "No changes"
+          git add data/live/processed/monthly
+          git commit -m "chore: monthly metrics $(date -u)" || echo "No changes"
           git push

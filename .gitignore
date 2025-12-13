@@ -1,27 +1,31 @@
-# Python
+# Python cache
 __pycache__/
 *.py[cod]
-*.pyo
 
-# Virtual environments
+# Virtual envs
 .venv/
 venv/
+
+# Packaging artifacts
+*.egg-info/
+dist/
+build/
 
 # IDE / OS
 .vscode/
 .idea/
 .DS_Store
 
-# Environment variables
+# Env files
 .env
 
-# Model cache (transformers)
+# Transformers cache
 .cache/
 huggingface/
 
 # Logs
 *.log
 
-# Do NOT ignore data or docs
+# DO NOT ignore data or docs
 # data/
 # docs/

@@ -2,7 +2,7 @@ name: Daily Evaluate
 
 on:
   schedule:
-    - cron: "45 19 * * *"   # 01:15 AM IST
+    - cron: "20 1 * * *"   # 06:50 AM IST
   workflow_dispatch:
 
 jobs:

@@ -2,7 +2,7 @@ name: Daily Collect
 
 on:
   schedule:
-    - cron: "40 17 * * *"   # 11:10 PM IST
+    - cron: "10 17 * * *"   # 10:40 PM IST
   workflow_dispatch:
 
 jobs:
@@ -19,13 +19,16 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Install project
+        run: pip install .
+
       - name: Run collectors
         run: python scripts/collect/run_collectors.py
 
-      - name: Commit raw data
+      - name: Commit collected data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/live/raw
-          git commit -m "data: daily raw collect" || echo "No changes"
+          git commit -m "data: daily collect $(date -u)" || echo "No changes"
           git push

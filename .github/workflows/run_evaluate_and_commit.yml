@@ -1,1 +1,33 @@
+name: Run Evaluation and Commit Results
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "55 15 * * *"   # 9:25 PM IST
+
+jobs:
+  evaluate_and_commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - run: pip install -r requirements.txt
+
+      - name: Run evaluation
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: python scripts/evaluate/run_safety_eval.py
+
+      - name: Commit generated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/live
+          git commit -m "Daily evaluated data $(date -u +'%Y-%m-%d')" || echo "No changes"
+          git push
 

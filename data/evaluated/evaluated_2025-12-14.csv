@@ -1,189 +1,753 @@
-date,risk_score,categories,source
-2025-12-14,0,none,hackernews_2025-12-14.csv
-2025-12-14,0,none,hackernews_2025-12-14.csv
-2025-12-14,0,none,hackernews_2025-12-14.csv
-2025-12-14,0,none,hackernews_2025-12-14.csv
-2025-12-14,0,none,hackernews_2025-12-14.csv
-2025-12-14,0,none,hackernews_2025-12-14.csv
-2025-12-14,0,none,hackernews_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
-2025-12-14,0,none,google_trends_2025-12-14.csv
+date,category,risk_score,source
+2025-12-14 13:36:42.405888,AI safety,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.405898,AI regulation,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.405900,AI bias,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.405902,AI misuse,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.405962,AI safety,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.405965,AI regulation,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.405967,AI bias,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.405969,AI misuse,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406022,AI safety,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406026,AI regulation,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406028,AI bias,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406033,AI misuse,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406086,AI safety,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406089,AI regulation,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406091,AI bias,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406093,AI misuse,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406143,AI safety,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406146,AI regulation,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406148,AI bias,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406149,AI misuse,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406211,AI safety,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406214,AI regulation,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406216,AI bias,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406218,AI misuse,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406266,AI safety,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406269,AI regulation,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406271,AI bias,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406273,AI misuse,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406326,AI safety,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406329,AI regulation,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406331,AI bias,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.406332,AI misuse,0,hackernews_2025-12-14.csv
+2025-12-14 13:36:42.407494,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407499,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407501,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407503,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407597,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407601,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407603,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407604,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407662,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407665,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407667,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407669,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407719,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407722,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407723,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407725,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407773,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407776,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407778,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407779,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407827,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407830,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407831,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407833,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407887,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407890,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407892,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407893,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407941,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407943,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407945,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407946,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407992,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407996,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407997,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.407999,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408045,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408048,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408049,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408051,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408098,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408100,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408102,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408104,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408150,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408153,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408155,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408156,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408209,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408212,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408213,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408215,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408261,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408264,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408265,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408270,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408317,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408320,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408322,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408323,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408373,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408377,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408378,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408380,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408427,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408430,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408431,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408433,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408479,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408481,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408483,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408488,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408552,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408556,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408558,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408559,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408619,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408623,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408625,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408626,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408676,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408679,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408681,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408682,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408729,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408732,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408733,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408735,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408780,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408783,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408785,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408786,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408837,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408840,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408841,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408843,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408889,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408892,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408894,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408895,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408941,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408943,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408945,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408947,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408992,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.408995,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409000,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409002,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409050,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409053,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409054,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409056,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409102,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409104,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409106,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409107,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409158,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409161,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409163,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409165,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409210,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409212,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409214,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409216,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409266,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409269,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409270,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409272,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409319,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409322,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409324,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409325,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409371,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409374,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409376,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409377,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409422,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409425,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409427,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409428,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409481,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409484,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409486,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409488,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409559,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409562,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409564,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409566,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409619,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409622,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409623,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409625,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409671,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409674,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409676,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409677,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409723,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409726,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409731,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409733,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409781,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409784,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409786,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409790,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409842,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409844,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409846,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409848,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409894,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409897,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409899,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409900,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409947,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409949,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409951,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409953,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.409998,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410001,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410003,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410004,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410050,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410052,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410054,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410056,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410106,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410109,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410111,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410112,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410174,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410177,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410179,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410180,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410227,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410230,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410231,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410233,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410278,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410281,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410282,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410284,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410329,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410332,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410333,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410335,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410381,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410383,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410385,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410386,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410441,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410444,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410445,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410447,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410497,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410499,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410501,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410503,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410567,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410570,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410572,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410573,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410624,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410626,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410628,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410630,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410675,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410678,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410680,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410681,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410726,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410729,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410730,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410732,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410783,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410786,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410787,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410789,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410834,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410837,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410839,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410841,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410886,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410889,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410890,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410892,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410937,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410939,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410941,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410943,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410992,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410995,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410997,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.410998,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411047,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411050,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411052,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411056,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411103,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411106,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411108,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411112,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411160,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411162,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411164,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411166,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411211,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411214,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411216,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411217,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411262,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411265,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411267,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411268,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411313,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411316,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411317,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411319,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411368,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411371,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411372,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411374,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411419,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411422,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411424,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411425,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411469,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411472,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411474,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411475,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411520,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411523,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411524,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411526,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411592,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411595,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411597,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411599,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411646,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411649,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411650,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411652,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411704,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411707,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411709,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411710,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411756,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411759,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411760,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411762,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411808,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411810,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411815,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411817,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411864,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411866,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411868,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411870,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411920,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411923,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411924,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411926,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411975,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411978,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411979,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.411981,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412032,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412034,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412036,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412038,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412083,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412086,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412088,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412089,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412138,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412141,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412142,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412144,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412190,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412193,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412194,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412196,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412241,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412243,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412245,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412247,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412291,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412293,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412295,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412300,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412346,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412349,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412351,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412352,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412397,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412399,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412401,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412403,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412446,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412448,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412450,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412451,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412495,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412497,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412502,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412504,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412621,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412626,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412627,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412629,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412696,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412700,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412702,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412704,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412754,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412756,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412758,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412760,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412808,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412811,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412813,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412814,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412867,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412871,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412872,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412874,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412922,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412925,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412927,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412928,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412975,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412977,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412979,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.412981,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413033,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413035,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413037,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413039,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413085,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413087,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413089,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413091,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413136,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413139,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413141,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413142,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413188,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413191,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413192,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413194,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413240,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413242,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413244,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413246,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413296,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413299,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413301,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413302,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413356,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413358,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413360,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413362,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413408,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413411,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413413,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413414,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413460,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413462,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413464,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413466,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413510,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413513,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413515,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413516,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413582,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413585,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413587,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413588,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413638,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413641,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413642,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413648,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413698,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413701,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413703,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413704,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413751,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413754,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413755,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413757,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413802,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413805,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413806,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413808,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413854,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413856,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413858,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413859,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413904,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413907,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413908,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413910,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413959,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413962,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413964,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.413968,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414015,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414017,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414019,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414020,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414066,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414068,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414070,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414072,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414117,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414120,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414121,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414123,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414168,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414171,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414172,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414174,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414218,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414221,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414223,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414224,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414274,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414277,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414279,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414280,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414325,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414328,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414329,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414331,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414375,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414378,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414379,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414381,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414425,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414428,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414430,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414431,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414475,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414478,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414479,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414481,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414531,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414548,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414550,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414552,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414608,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414610,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414612,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414614,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414660,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414663,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414668,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414670,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414717,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414720,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414722,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414723,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414768,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414771,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414773,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414774,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414818,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414820,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414822,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414824,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414867,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414870,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414872,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414880,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414928,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414930,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414932,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414934,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414980,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414983,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414984,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.414986,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415031,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415033,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415035,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415037,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415081,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415083,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415085,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415087,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415131,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415134,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415136,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415137,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415187,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415190,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415192,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415193,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415238,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415241,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415243,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415244,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415289,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415293,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415294,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415296,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415341,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415344,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415348,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415350,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415400,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415403,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415405,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415406,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415453,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415456,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415457,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415459,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415508,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415511,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415513,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415514,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415588,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415591,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415593,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415595,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415644,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415647,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415648,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415650,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415701,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415704,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415705,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415707,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415754,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415756,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415758,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415759,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415805,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415807,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415809,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415811,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415860,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415863,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415865,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415866,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415911,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415914,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415915,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415917,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415961,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415963,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415965,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.415966,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416011,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416013,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416015,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416016,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416065,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416068,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416069,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416071,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416116,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416119,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416121,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416125,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416172,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416174,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416176,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416178,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416223,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416225,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416227,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416228,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416276,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416279,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416281,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416282,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416329,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416332,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416333,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416335,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416380,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416383,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416385,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416387,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416437,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416440,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416441,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416443,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416488,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416491,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416492,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416494,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416554,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416558,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416559,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416561,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416612,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416615,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416616,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416618,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416664,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416667,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416668,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416670,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416715,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416717,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416721,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416729,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416803,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416807,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416809,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416810,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416865,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416868,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416869,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416871,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416918,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416921,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416922,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416924,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416969,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416972,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416974,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.416975,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417020,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417022,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417024,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417026,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417071,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417073,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417075,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417077,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417126,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417129,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417130,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417132,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417181,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417184,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417186,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417187,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417233,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417236,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417237,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417239,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417284,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417286,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417288,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417290,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417335,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417337,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417339,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417340,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417385,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417388,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417390,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417395,AI misuse,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417442,AI safety,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417445,AI regulation,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417449,AI bias,0,google_trends_2025-12-14.csv
+2025-12-14 13:36:42.417451,AI misuse,0,google_trends_2025-12-14.csv

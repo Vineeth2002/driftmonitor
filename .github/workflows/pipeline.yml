@@ -30,6 +30,9 @@ jobs:
       - name: Collect HackerNews
         run: python scripts/collect_hackernews.py
 
+      - name: Collect Policy & Regulation News
+        run: python scripts/collect_policy_news.py
+
       - name: Evaluate AI safety signals
         run: python scripts/evaluate_safety.py
 

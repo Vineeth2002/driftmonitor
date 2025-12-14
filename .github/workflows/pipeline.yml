@@ -1,12 +1,14 @@
-name: AI Safety Daily Pipeline
+name: AI Safety Hourly Pipeline
 
 permissions:
   contents: write
 
 on:
   schedule:
-    # 5:30 PM IST = 12:00 UTC
-    - cron: "0 12 * * *"
+    # Runs every hour at :30 UTC
+    # This corresponds to every hour at :00 IST
+    # Starting effectively from 7:00 PM IST and continuing 24x7
+    - cron: "30 * * * *"
   workflow_dispatch:
 
 jobs:
@@ -25,12 +27,13 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Collect data
-        run: |
-          python scripts/collect_google_trends.py
-          python scripts/collect_hackernews.py
+      - name: Collect Google Trends data
+        run: python scripts/collect_google_trends.py
 
-      - name: Evaluate safety
+      - name: Collect HackerNews data
+        run: python scripts/collect_hackernews.py
+
+      - name: Evaluate AI safety signals
         run: python scripts/evaluate_safety.py
 
       - name: Aggregate daily trends
@@ -39,10 +42,10 @@ jobs:
       - name: Build dashboard
         run: python scripts/build_dashboard.py
 
-      - name: Commit results
+      - name: Commit and push results
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add data docs
-          git diff --cached --quiet || git commit -m "Automated update $(date -u)"
+          git diff --cached --quiet || git commit -m "Hourly automated update $(date -u)"
           git push

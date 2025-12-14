@@ -3,56 +3,42 @@ import glob
 import os
 import re
 from datetime import datetime
-from pandas.errors import EmptyDataError
 
 RISK_KEYWORDS = {
     "AI safety": [
-        "safety", "unsafe", "alignment", "hallucination",
-        "robust", "failure", "risk", "guardrail"
+        "safety","unsafe","alignment","hallucination",
+        "robust","risk","failure","guardrail"
     ],
     "AI regulation": [
-        "law", "policy", "regulation", "ban",
-        "compliance", "governance", "oversight"
+        "law","policy","regulation","ban",
+        "compliance","governance","oversight"
     ],
     "AI bias": [
-        "bias", "biased", "fairness", "unfair",
-        "discrimination", "inequality", "ethical"
+        "bias","biased","fairness","unfair",
+        "discrimination","inequality","ethical"
     ],
     "AI misuse": [
-        "misuse", "abuse", "fraud", "scam",
-        "deepfake", "weapon", "harm", "manipulation"
+        "misuse","abuse","fraud","scam",
+        "deepfake","weapon","harm","manipulation"
     ]
 }
 
-raw_files = glob.glob("data/raw/*.csv")
 records = []
 
-for file in raw_files:
-    try:
-        if os.path.getsize(file) == 0:
-            continue
-
-        df = pd.read_csv(file)
-        if df.empty:
-            continue
-
-    except EmptyDataError:
-        continue
+for file in glob.glob("data/raw/*.csv"):
+    df = pd.read_csv(file)
 
     for _, row in df.iterrows():
-        text = " ".join(map(str, row.values)).lower()
-        text = re.sub(r"[^a-z ]", " ", text)
-
+        text = re.sub(r"[^a-z ]", " ", " ".join(map(str, row.values)).lower())
         words = text.split()
         total_words = len(words)
 
         if total_words == 0:
             continue
 
-        for category, keywords in RISK_KEYWORDS.items():
-            risk_words = sum(words.count(k) for k in keywords)
+        for category, keys in RISK_KEYWORDS.items():
+            risk_words = sum(words.count(k) for k in keys)
 
-            # Minimum signal floor (industry practice)
             if risk_words == 0 and total_words > 40:
                 risk_words = 1
 
@@ -76,8 +62,8 @@ for file in raw_files:
 
 os.makedirs("data/evaluated", exist_ok=True)
 today = datetime.utcnow().strftime("%Y-%m-%d")
+pd.DataFrame(records).to_csv(
+    f"data/evaluated/evaluated_{today}.csv", index=False
+)
 
-out = pd.DataFrame(records)
-out.to_csv(f"data/evaluated/evaluated_{today}.csv", index=False)
-
-print("Safety evaluation completed.")
+print("Safety evaluation complete")

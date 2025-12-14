@@ -9,8 +9,6 @@ if not files:
     exit(0)
 
 df = pd.concat([pd.read_csv(f) for f in files], ignore_index=True)
-
-# Convert date
 df["date"] = pd.to_datetime(df["date"])
 
 daily = (

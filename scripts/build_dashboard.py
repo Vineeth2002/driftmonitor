@@ -1,138 +1,119 @@
 import pandas as pd
-import glob
+from pathlib import Path
 from datetime import datetime
-import os
 
-DASHBOARD_PATH = "docs/index.html"
+OUTPUT = Path("docs/index.html")
+OUTPUT.parent.mkdir(exist_ok=True)
 
-def load_latest(path_pattern):
-    files = sorted(glob.glob(path_pattern))
-    if not files:
+SEVERITY_COLORS = {
+    "🟢 LOW": "#1b5e20",
+    "🟠 MEDIUM": "#e65100",
+    "🔴 HIGH": "#b71c1c"
+}
+
+def load_table(path):
+    if not path.exists():
         return None
-    return pd.read_csv(files[-1])
+    return pd.read_csv(path)
 
-def add_severity(df):
-    def severity(row):
-        if row["risk_percentage"] < 1:
-            return "🟢 LOW"
-        elif row["risk_percentage"] < 5:
-            return "🟡 MEDIUM"
-        else:
-            return "🔴 HIGH"
+def render_table(df, title):
+    if df is None or df.empty:
+        return f"<h3>{title}</h3><p>No data available yet.</p>"
 
-    df["severity"] = df.apply(severity, axis=1)
-    return df
+    rows = ""
+    for _, r in df.iterrows():
+        color = SEVERITY_COLORS.get(r["severity"], "#333")
+        rows += f"""
+        <tr style="border-left:6px solid {color}">
+            <td>{r['category']}</td>
+            <td>{int(r['total_words'])}</td>
+            <td>{int(r['risk_words'])}</td>
+            <td>{r['risk_percentage']}%</td>
+            <td><strong style="color:{color}">{r['severity']}</strong></td>
+        </tr>
+        """
 
-def table_html(df):
-    return df.to_html(index=False, classes="risk-table", border=0)
+    return f"""
+    <h3>{title}</h3>
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Total Words</th>
+            <th>Risk Words</th>
+            <th>Risk %</th>
+            <th>Severity</th>
+        </tr>
+        {rows}
+    </table>
+    """
 
-daily = load_latest("data/history/daily/*.csv")
-weekly = load_latest("data/history/weekly/*.csv")
-monthly = load_latest("data/history/monthly/*.csv")
-quarterly = load_latest("data/history/quarterly/*.csv")
-
-sections = []
-
-for title, data in [
-    ("Daily AI Risk Summary", daily),
-    ("Weekly AI Risk Summary", weekly),
-    ("Monthly AI Risk Summary", monthly),
-    ("Quarterly AI Risk Summary", quarterly),
-]:
-    if data is not None and not data.empty:
-        data = add_severity(data)
-        sections.append(f"<h2>{title}</h2>{table_html(data)}")
-    else:
-        sections.append(f"<h2>{title}</h2><p>No data available yet.</p>")
+daily = load_table(Path("data/history/daily/daily_trends.csv"))
+weekly = load_table(Path("data/history/weekly/weekly_trends.csv"))
+monthly = load_table(Path("data/history/monthly/monthly_trends.csv"))
+quarterly = load_table(Path("data/history/quarterly/quarterly_trends.csv"))
 
 html = f"""
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
 <title>AI Drift Monitor</title>
 <style>
 body {{
-  font-family: Arial, sans-serif;
-  margin: 40px;
-  background: #ffffff;
-  color: #222;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 40px;
 }}
-
-h1 {{ margin-bottom: 5px; }}
-h2 {{ margin-top: 40px; }}
-
-.status {{
-  font-weight: bold;
-  margin-bottom: 20px;
+h1 {{ color: #f8fafc; }}
+h3 {{ margin-top: 40px; }}
+table {{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background: #020617;
 }}
-
+th {{
+    background: #111827;
+    padding: 10px;
+}}
+td {{
+    padding: 10px;
+    border-bottom: 1px solid #1f2933;
+}}
 .legend {{
-  position: fixed;
-  right: 30px;
-  top: 100px;
-  background: #f8f9fa;
-  padding: 15px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  width: 260px;
-}}
-
-.legend h3 {{
-  margin-top: 0;
-}}
-
-.risk-table {{
-  border-collapse: collapse;
-  width: 100%;
-  margin-top: 10px;
-}}
-
-.risk-table th {{
-  background: #343a40;
-  color: white;
-  padding: 10px;
-}}
-
-.risk-table td {{
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
-}}
-
-footer {{
-  margin-top: 50px;
-  font-size: 0.9em;
-  color: #555;
+    background:#020617;
+    padding:15px;
+    border-radius:8px;
+    width: fit-content;
 }}
 </style>
 </head>
-
 <body>
 
 <h1>AI Drift Monitor</h1>
-<div class="status">Status: Automated monitoring active</div>
+<p><strong>Status:</strong> Automated monitoring active</p>
 
 <div class="legend">
-  <h3>Severity Guide</h3>
-  <p>🟢 <b>LOW</b><br>&lt; 1% risk words<br>Minimal AI risk</p>
-  <p>🟡 <b>MEDIUM</b><br>1–5% risk words<br>Moderate AI risk</p>
-  <p>🔴 <b>HIGH</b><br>&gt; 5% risk words<br>Elevated AI risk</p>
+<b>Severity Legend</b><br>
+🟢 LOW – Normal signal level<br>
+🟠 MEDIUM – Elevated attention<br>
+🔴 HIGH – Immediate concern
 </div>
 
-{''.join(sections)}
+{render_table(daily, "Daily Risk Summary")}
+{render_table(weekly, "Weekly Risk Summary")}
+{render_table(monthly, "Monthly Risk Summary")}
+{render_table(quarterly, "Quarterly Risk Summary")}
 
-<footer>
-<p>Last updated (UTC): {datetime.utcnow().isoformat()}</p>
-<p>Sources: Google Trends, Hacker News</p>
-<p>Pipeline: GitHub Actions (Fully Automated)</p>
-</footer>
+<p style="margin-top:40px;font-size:12px;">
+Last updated (UTC): {datetime.utcnow()}<br>
+Sources: Google Trends, Hacker News<br>
+Pipeline: GitHub Actions (Automated)
+</p>
 
 </body>
 </html>
 """
 
-os.makedirs("docs", exist_ok=True)
-with open(DASHBOARD_PATH, "w", encoding="utf-8") as f:
-    f.write(html)
-
+OUTPUT.write_text(html, encoding="utf-8")
 print("Dashboard built successfully")

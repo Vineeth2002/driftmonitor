@@ -2,48 +2,55 @@ import pandas as pd
 import glob
 import os
 
+# -------------------------------------------------
+# Load evaluated data
+# -------------------------------------------------
 files = glob.glob("data/evaluated/*.csv")
 
-# -------------------------
-# No evaluated files
-# -------------------------
 if not files:
     print("No evaluated files found. Skipping aggregation.")
     exit(0)
 
 frames = []
-
 for f in files:
     df = pd.read_csv(f)
+    if not df.empty:
+        frames.append(df)
 
-    # Skip empty CSVs
-    if df.empty:
-        continue
-
-    frames.append(df)
-
-# -------------------------
-# All files empty
-# -------------------------
 if not frames:
-    print("Evaluated files exist but contain no data.")
+    print("Evaluated files exist but all are empty. Skipping aggregation.")
     exit(0)
 
 df = pd.concat(frames, ignore_index=True)
 
-# Ensure datetime
+# Ensure date is datetime
 df["date"] = pd.to_datetime(df["date"])
 
-# -------------------------
-# Create output folders
-# -------------------------
+# -------------------------------------------------
+# Create output directories
+# -------------------------------------------------
+os.makedirs("data/history/daily", exist_ok=True)
 os.makedirs("data/history/weekly", exist_ok=True)
 os.makedirs("data/history/monthly", exist_ok=True)
 os.makedirs("data/history/quarterly", exist_ok=True)
 
-# -------------------------
-# Weekly aggregation
-# -------------------------
+# -------------------------------------------------
+# DAILY aggregation
+# -------------------------------------------------
+daily = (
+    df.groupby([pd.Grouper(key="date", freq="D"), "category"])
+      .risk_score.sum()
+      .reset_index()
+)
+
+daily.to_csv(
+    "data/history/daily/daily_trends.csv",
+    index=False
+)
+
+# -------------------------------------------------
+# WEEKLY aggregation
+# -------------------------------------------------
 weekly = (
     df.groupby([pd.Grouper(key="date", freq="W"), "category"])
       .risk_score.sum()
@@ -55,9 +62,9 @@ weekly.to_csv(
     index=False
 )
 
-# -------------------------
-# Monthly aggregation
-# -------------------------
+# -------------------------------------------------
+# MONTHLY aggregation
+# -------------------------------------------------
 monthly = (
     df.groupby([pd.Grouper(key="date", freq="M"), "category"])
       .risk_score.sum()
@@ -69,9 +76,9 @@ monthly.to_csv(
     index=False
 )
 
-# -------------------------
-# Quarterly aggregation
-# -------------------------
+# -------------------------------------------------
+# QUARTERLY aggregation
+# -------------------------------------------------
 quarterly = (
     df.groupby([pd.Grouper(key="date", freq="Q"), "category"])
       .risk_score.sum()
@@ -83,4 +90,4 @@ quarterly.to_csv(
     index=False
 )
 
-print("Weekly, monthly, and quarterly aggregation completed successfully")
+print("Daily, weekly, monthly, and quarterly aggregation completed successfully")

@@ -36,9 +36,6 @@ jobs:
       - name: Aggregate daily trends
         run: python scripts/aggregate_daily.py
 
-      - name: Aggregate weekly/monthly trends
-        run: python scripts/aggregate_trends.py
-
       - name: Build dashboard
         run: python scripts/build_dashboard.py
 

@@ -2,60 +2,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>AI Drift Monitor</title>
 <style>
 body {
-  font-family: Arial, sans-serif;
-  margin: 40px;
-  background: #ffffff;
-  color: #222;
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background: #f6f8fa;
 }
-
-h1 { margin-bottom: 5px; }
-h2 { margin-top: 40px; }
-
+h1 {
+    margin-bottom: 5px;
+}
 .status {
-  font-weight: bold;
-  margin-bottom: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
 }
-
-.legend {
-  position: fixed;
-  right: 30px;
-  top: 100px;
-  background: #f8f9fa;
-  padding: 15px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  width: 260px;
+.container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 30px;
 }
-
-.legend h3 {
-  margin-top: 0;
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
 }
-
-.risk-table {
-  border-collapse: collapse;
-  width: 100%;
-  margin-top: 10px;
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
-
-.risk-table th {
-  background: #343a40;
-  color: white;
-  padding: 10px;
+th {
+    background: #2f363d;
+    color: white;
+    padding: 10px;
+    text-align: left;
 }
-
-.risk-table td {
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
 }
-
-footer {
-  margin-top: 50px;
-  font-size: 0.9em;
-  color: #555;
+.badge {
+    font-weight: bold;
+}
+.guide {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 20px;
+}
+.footer {
+    margin-top: 40px;
+    color: #555;
+    font-size: 14px;
 }
 </style>
 </head>
@@ -65,200 +67,26 @@ footer {
 <h1>AI Drift Monitor</h1>
 <div class="status">Status: Automated monitoring active</div>
 
-<div class="legend">
-  <h3>Severity Guide</h3>
-  <p>🟢 <b>LOW</b><br>&lt; 1% risk words<br>Minimal AI risk</p>
-  <p>🟡 <b>MEDIUM</b><br>1–5% risk words<br>Moderate AI risk</p>
-  <p>🔴 <b>HIGH</b><br>&gt; 5% risk words<br>Elevated AI risk</p>
+<div class="container">
+
+<div>
+<div class='card'><h2>Daily AI Risk Summary</h2><p>No data available yet.</p></div><div class='card'><h2>Weekly AI Risk Summary</h2><p>No data available yet.</p></div><div class='card'><h2>Monthly AI Risk Summary</h2><p>No data available yet.</p></div><div class='card'><h2>Quarterly AI Risk Summary</h2><p>No data available yet.</p></div>
 </div>
 
-<h2>Daily AI Risk Summary</h2><table class="dataframe risk-table">
-  <thead>
-    <tr style="text-align: right;">
-      <th>date</th>
-      <th>category</th>
-      <th>total_words</th>
-      <th>risk_words</th>
-      <th>risk_percentage</th>
-      <th>severity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>2025-12-14</td>
-      <td>AI bias</td>
-      <td>193</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>🟢 LOW</td>
-    </tr>
-    <tr>
-      <td>2025-12-14</td>
-      <td>AI misuse</td>
-      <td>193</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>🟢 LOW</td>
-    </tr>
-    <tr>
-      <td>2025-12-14</td>
-      <td>AI regulation</td>
-      <td>193</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>🟢 LOW</td>
-    </tr>
-    <tr>
-      <td>2025-12-14</td>
-      <td>AI safety</td>
-      <td>193</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>🟢 LOW</td>
-    </tr>
-  </tbody>
-</table><h2>Weekly AI Risk Summary</h2><table class="dataframe risk-table">
-  <thead>
-    <tr style="text-align: right;">
-      <th>date</th>
-      <th>category</th>
-      <th>total_words</th>
-      <th>risk_words</th>
-      <th>risk_percentage</th>
-      <th>severity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>2025-12-14</td>
-      <td>AI bias</td>
-      <td>193</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>🟢 LOW</td>
-    </tr>
-    <tr>
-      <td>2025-12-14</td>
-      <td>AI misuse</td>
-      <td>193</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>🟢 LOW</td>
-    </tr>
-    <tr>
-      <td>2025-12-14</td>
-      <td>AI regulation</td>
-      <td>193</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>🟢 LOW</td>
-    </tr>
-    <tr>
-      <td>2025-12-14</td>
-      <td>AI safety</td>
-      <td>193</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>🟢 LOW</td>
-    </tr>
-  </tbody>
-</table><h2>Monthly AI Risk Summary</h2><table class="dataframe risk-table">
-  <thead>
-    <tr style="text-align: right;">
-      <th>date</th>
-      <th>category</th>
-      <th>total_words</th>
-      <th>risk_words</th>
-      <th>risk_percentage</th>
-      <th>severity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>2025-12-31</td>
-      <td>AI bias</td>
-      <td>193</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>🟢 LOW</td>
-    </tr>
-    <tr>
-      <td>2025-12-31</td>
-      <td>AI misuse</td>
-      <td>193</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>🟢 LOW</td>
-    </tr>
-    <tr>
-      <td>2025-12-31</td>
-      <td>AI regulation</td>
-      <td>193</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>🟢 LOW</td>
-    </tr>
-    <tr>
-      <td>2025-12-31</td>
-      <td>AI safety</td>
-      <td>193</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>🟢 LOW</td>
-    </tr>
-  </tbody>
-</table><h2>Quarterly AI Risk Summary</h2><table class="dataframe risk-table">
-  <thead>
-    <tr style="text-align: right;">
-      <th>date</th>
-      <th>category</th>
-      <th>total_words</th>
-      <th>risk_words</th>
-      <th>risk_percentage</th>
-      <th>severity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>2025-12-31</td>
-      <td>AI bias</td>
-      <td>193</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>🟢 LOW</td>
-    </tr>
-    <tr>
-      <td>2025-12-31</td>
-      <td>AI misuse</td>
-      <td>193</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>🟢 LOW</td>
-    </tr>
-    <tr>
-      <td>2025-12-31</td>
-      <td>AI regulation</td>
-      <td>193</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>🟢 LOW</td>
-    </tr>
-    <tr>
-      <td>2025-12-31</td>
-      <td>AI safety</td>
-      <td>193</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>🟢 LOW</td>
-    </tr>
-  </tbody>
-</table>
+<div class="guide">
+<h2>Severity Guide</h2>
+<p>🟢 <b>LOW</b><br>&lt; 1% risk words<br>Minimal AI risk</p>
+<p>🟡 <b>MEDIUM</b><br>1–5% risk words<br>Moderate AI risk</p>
+<p>🔴 <b>HIGH</b><br>&gt; 5% risk words<br>Elevated AI risk</p>
+</div>
 
-<footer>
-<p>Last updated (UTC): 2025-12-14T15:57:29.265133</p>
-<p>Sources: Google Trends, Hacker News</p>
-<p>Pipeline: GitHub Actions (Fully Automated)</p>
-</footer>
+</div>
+
+<div class="footer">
+Last updated (UTC): 2025-12-14 16:07:34<br>
+Sources: Google Trends, Hacker News<br>
+Pipeline: GitHub Actions (Automated)
+</div>
 
 </body>
 </html>

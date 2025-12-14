@@ -1,3 +1,0 @@
-"""
-DriftMonitor scripts package.
-"""

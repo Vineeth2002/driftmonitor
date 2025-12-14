@@ -16,19 +16,18 @@ try:
         timeframe="now 1-d"
     )
 
-    time.sleep(10)  # IMPORTANT: reduce rate limit risk
+    time.sleep(10)  # prevent 429
 
     df = pytrends.interest_over_time()
 
     if df.empty:
-        raise Exception("Empty Google Trends data")
+        raise Exception("Empty trends data")
 
     df.reset_index(inplace=True)
     df.to_csv(outfile, index=False)
     print("Google Trends collected")
 
 except Exception as e:
-    # FAIL-SAFE fallback
     print("Google Trends skipped:", e)
     pd.DataFrame(
         {"date": [], "note": ["rate limited or unavailable"]}

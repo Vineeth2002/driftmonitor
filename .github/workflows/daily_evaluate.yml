@@ -2,35 +2,29 @@ name: Daily Evaluate
 
 on:
   schedule:
-    - cron: "20 1 * * *"   # 06:50 AM IST
+    - cron: "20 1 * * *"   # 6:50 AM IST
   workflow_dispatch:
 
 jobs:
   evaluate:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install -e .
+        run: pip install -r requirements.txt
 
       - name: Run safety evaluation
         run: python scripts/evaluate/run_safety_eval.py
 
       - name: Commit processed data
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
           git add data/live/processed
-          git commit -m "chore(data): daily safety evaluation $(date -u)" || echo "No changes"
+          git commit -m "daily evaluation $(date -u)" || echo "No changes"
           git push

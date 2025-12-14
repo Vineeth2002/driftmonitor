@@ -22,18 +22,18 @@ for f in files:
         text = " ".join(map(str, row.values)).lower()
 
         total_score = 0
-        matched_categories = []
+        matched = []
 
         for cat, keys in RISK_KEYWORDS.items():
             score = sum(1 for k in keys if k in text)
             if score > 0:
                 total_score += score
-                matched_categories.append(cat)
+                matched.append(cat)
 
         records.append({
             "date": today,
-            "risk_score": total_score,          # can be 0
-            "categories": ",".join(matched_categories) if matched_categories else "none",
+            "risk_score": total_score,
+            "categories": ",".join(matched) if matched else "none",
             "source": os.path.basename(f)
         })
 

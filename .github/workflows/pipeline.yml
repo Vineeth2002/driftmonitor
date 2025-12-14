@@ -5,7 +5,7 @@ permissions:
 
 on:
   schedule:
-    - cron: "30 * * * *"   # Every hour at HH:30 UTC
+    - cron: "0 */6 * * *"
   workflow_dispatch:
 
 jobs:
@@ -13,21 +13,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
-      - run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-      - run: python scripts/collect_google_trends.py
-      - run: python scripts/collect_hackernews.py
-      - run: python scripts/evaluate_safety.py
-      - run: python scripts/aggregate_trends.py
-      - run: python scripts/build_dashboard.py
+      - name: Collect Google Trends
+        run: python scripts/collect_google_trends.py
 
-      - run: |
+      - name: Collect HackerNews
+        run: python scripts/collect_hackernews.py
+
+      - name: Evaluate AI safety signals
+        run: python scripts/evaluate_safety.py
+
+      - name: Aggregate trends
+        run: python scripts/aggregate_trends.py
+
+      - name: Build dashboard
+        run: python scripts/build_dashboard.py
+
+      - name: Commit and push results
+        run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add data docs

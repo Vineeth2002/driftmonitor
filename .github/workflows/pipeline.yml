@@ -13,40 +13,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      - run: pip install -r requirements.txt
 
-      - name: Collect Google Trends
-        run: python scripts/collect_google_trends.py
+      - run: python scripts/collect_google_trends.py
+      - run: python scripts/collect_hackernews.py
+      - run: python scripts/collect_policy_news.py
 
-      - name: Collect HackerNews
-        run: python scripts/collect_hackernews.py
+      - run: python scripts/evaluate_safety.py
 
-      - name: Collect Policy & Regulation News
-        run: python scripts/collect_policy_news.py
+      - run: python scripts/aggregate_daily.py
+      - run: python scripts/aggregate_trends.py
 
-      - name: Evaluate AI safety signals
-        run: python scripts/evaluate_safety.py
+      - run: python scripts/build_dashboard.py
 
-      - name: Aggregate Daily
-        run: python scripts/aggregate_daily.py
-
-      - name: Aggregate Weekly / Monthly / Quarterly
-        run: python scripts/aggregate_trends.py
-
-      - name: Build dashboard
-        run: python scripts/build_dashboard.py
-
-      - name: Commit and push results
-        run: |
+      - run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add data docs

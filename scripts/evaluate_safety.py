@@ -1,65 +1,46 @@
 import pandas as pd
-import glob
 import os
 from datetime import datetime
 
-# ==============================
-# Risk keyword definitions
-# ==============================
 RISK_KEYWORDS = {
-    "AI safety": ["alignment", "safety", "hallucination", "robust"],
+    "AI safety": ["alignment", "hallucination", "unsafe", "robustness"],
+    "AI regulation": ["law", "policy", "compliance", "regulation"],
     "AI bias": ["bias", "fairness", "discrimination"],
-    "AI misuse": ["misuse", "weapon", "abuse", "fraud"],
-    "AI regulation": ["regulation", "law", "policy", "governance"]
+    "AI misuse": ["misuse", "deepfake", "fraud", "scam"]
 }
 
-RAW_PATH = "data/raw/*.csv"
-OUTPUT_DIR = "data/evaluated"
+def severity_label(risk_pct):
+    if risk_pct < 1:
+        return "🟢 LOW"
+    elif risk_pct <= 5:
+        return "🟡 MEDIUM"
+    return "🔴 HIGH"
 
-files = glob.glob(RAW_PATH)
+os.makedirs("data/evaluated", exist_ok=True)
 
-if not files:
-    print("No raw data files found.")
-    exit(0)
+input_files = os.listdir("data/raw")
+rows = []
 
-records = []
+for file in input_files:
+    df = pd.read_csv(f"data/raw/{file}")
 
-for file in files:
-    df = pd.read_csv(file)
+    text = " ".join(df["text"].astype(str)).lower().split()
+    total_words = len(text)
 
-    for _, row in df.iterrows():
-        text = " ".join(map(str, row.values)).lower()
-        total_words = len(text.split())
+    for category, keywords in RISK_KEYWORDS.items():
+        risk_words = sum(text.count(k) for k in keywords)
+        risk_pct = round((risk_words / total_words) * 100, 2) if total_words else 0
 
-        for category, keywords in RISK_KEYWORDS.items():
-            risk_count = sum(text.count(word) for word in keywords)
+        rows.append({
+            "date": datetime.utcnow().date().isoformat(),
+            "category": category,
+            "total_words": total_words,
+            "risk_words": risk_words,
+            "risk_percentage": risk_pct,
+            "severity": severity_label(risk_pct)
+        })
 
-            records.append({
-                "date": datetime.utcnow().date(),
-                "category": category,
-                "total_words": total_words,
-                "risk_words": risk_count,
-                "risk_score": risk_count,  # backward compatibility
-                "source": os.path.basename(file)
-            })
+out_df = pd.DataFrame(rows)
+out_df.to_csv(f"data/evaluated/evaluated_{datetime.utcnow().date()}.csv", index=False)
 
-# ==============================
-# Create evaluated dataframe
-# ==============================
-evaluated_df = pd.DataFrame(records)
-
-if evaluated_df.empty:
-    print("No evaluation records created.")
-    exit(0)
-
-# ==============================
-# Save output
-# ==============================
-os.makedirs(OUTPUT_DIR, exist_ok=True)
-
-today = datetime.utcnow().strftime("%Y-%m-%d")
-output_file = f"{OUTPUT_DIR}/evaluated_{today}.csv"
-
-evaluated_df.to_csv(output_file, index=False)
-
-print(f"Safety evaluation completed: {output_file}")
+print("Safety evaluation complete")

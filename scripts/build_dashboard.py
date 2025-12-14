@@ -2,130 +2,167 @@ import pandas as pd
 from pathlib import Path
 from datetime import datetime
 
+# ---------- Paths ----------
+BASE = Path("data/history")
 DOCS = Path("docs")
 DOCS.mkdir(exist_ok=True)
 
-def load_csv(path):
-    return pd.read_csv(path) if path.exists() else pd.DataFrame()
+FILES = {
+    "Daily AI Risk Summary": BASE / "daily" / "daily_trends.csv",
+    "Weekly AI Risk Summary": BASE / "weekly" / "weekly_trends.csv",
+    "Monthly AI Risk Summary": BASE / "monthly" / "monthly_trends.csv",
+    "Quarterly AI Risk Summary": BASE / "quarterly" / "quarterly_trends.csv",
+}
 
-def severity_label(p):
-    if p < 1:
-        return "🟢 LOW"
-    elif p <= 5:
-        return "🟡 MEDIUM"
-    else:
-        return "🔴 HIGH"
+# ---------- Helpers ----------
+def load_df(path: Path):
+    if path.exists():
+        return pd.read_csv(path)
+    return pd.DataFrame()
 
-def render_table(df):
+def render_table(df: pd.DataFrame):
     if df.empty:
-        return "<p><em>No data available.</em></p>"
+        return """
+        <table class="risk-table">
+            <tr>
+                <td colspan="7" style="text-align:center;color:#777;">
+                    No data available yet
+                </td>
+            </tr>
+        </table>
+        """
 
-    df["severity"] = df["risk_percentage"].apply(severity_label)
-    return df.to_html(index=False, classes="risk-table")
+    return df.to_html(
+        index=False,
+        classes="risk-table",
+        border=0,
+        justify="left"
+    )
 
-# ---- LOAD DATA ----
-daily = load_csv(Path("data/history/daily/daily_summary.csv"))
-weekly = load_csv(Path("data/history/weekly/weekly_summary.csv"))
-monthly = load_csv(Path("data/history/monthly/monthly_summary.csv"))
-quarterly = load_csv(Path("data/history/quarterly/quarterly_summary.csv"))
-
-# ---- HTML ----
+# ---------- HTML ----------
 html = f"""
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>AI Drift Monitor</title>
+
 <style>
 body {{
     font-family: Arial, sans-serif;
-    background: #f6f7f9;
-    padding: 30px;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 25px;
 }}
-h1 {{ margin-bottom: 5px; }}
-.status {{ font-weight: bold; margin-bottom: 25px; }}
+
+h1 {{
+    margin-bottom: 5px;
+}}
+
+.status {{
+    font-weight: bold;
+    margin-bottom: 20px;
+}}
 
 .layout {{
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 3.5fr 1.2fr;
     gap: 25px;
 }}
 
 .section {{
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
+    background: #ffffff;
+    padding: 18px;
+    border-radius: 8px;
     margin-bottom: 25px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }}
 
 .risk-table {{
     width: 100%;
     border-collapse: collapse;
-}}
-.risk-table th {{
-    background: #343a40;
-    color: #fff;
-    padding: 10px;
-}}
-.risk-table td {{
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+    margin-top: 10px;
 }}
 
-.severity {{
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    height: fit-content;
+.risk-table th {{
+    background: #343a40;
+    color: #ffffff;
+    padding: 10px;
+    font-size: 14px;
+}}
+
+.risk-table td {{
+    padding: 9px;
+    border-bottom: 1px solid #ddd;
+    font-size: 13px;
+}}
+
+.guide {{
+    background: #ffffff;
+    padding: 18px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 20px;
 }}
 
 .footer {{
-    margin-top: 40px;
+    margin-top: 35px;
+    font-size: 13px;
     color: #555;
-    font-size: 0.9em;
 }}
 </style>
 </head>
 
 <body>
+
 <h1>AI Drift Monitor</h1>
 <div class="status">Status: Automated monitoring active</div>
 
 <div class="layout">
 
 <div>
-<div class="section">
-<h2>Daily AI Risk Summary</h2>
-{render_table(daily)}
+"""
+
+# ---------- Tables ----------
+for title, path in FILES.items():
+    df = load_df(path)
+    html += f"""
+    <div class="section">
+        <h2>{title}</h2>
+        {render_table(df)}
+    </div>
+    """
+
+# ---------- Severity Guide ----------
+html += """
 </div>
 
-<div class="section">
-<h2>Weekly AI Risk Summary</h2>
-{render_table(weekly)}
-</div>
+<div class="guide">
+    <h2>Severity Guide</h2>
+    <p>🟢 <b>LOW</b><br>
+       Risk &lt; 1%<br>
+       Minimal AI risk signals</p>
 
-<div class="section">
-<h2>Monthly AI Risk Summary</h2>
-{render_table(monthly)}
-</div>
+    <p>🟡 <b>MEDIUM</b><br>
+       Risk 1–5%<br>
+       Moderate AI risk signals</p>
 
-<div class="section">
-<h2>Quarterly AI Risk Summary</h2>
-{render_table(quarterly)}
-</div>
-</div>
+    <p>🔴 <b>HIGH</b><br>
+       Risk &gt; 5%<br>
+       Elevated AI risk signals</p>
 
-<div class="severity">
-<h3>Severity Guide</h3>
-<p>🟢 <b>LOW</b><br>&lt; 1% risk words<br>Minimal AI risk</p>
-<p>🟡 <b>MEDIUM</b><br>1–5% risk words<br>Moderate AI risk</p>
-<p>🔴 <b>HIGH</b><br>&gt; 5% risk words<br>Elevated AI risk</p>
+    <hr>
+    <p><b>Trend</b><br>
+       🔺 Increase<br>
+       🔻 Decrease<br>
+       ➖ Stable / New</p>
 </div>
 
 </div>
 
 <div class="footer">
-Last updated (UTC): {datetime.utcnow().isoformat()}<br>
+Last updated (UTC): {datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")}<br>
 Sources: Google Trends, Hacker News<br>
 Pipeline: GitHub Actions (Automated)
 </div>

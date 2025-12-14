@@ -1,53 +1,50 @@
 import pandas as pd
-import plotly.express as px
 import os
 
-OUTPUT_DIR = "docs"
-OUTPUT_FILE = os.path.join(OUTPUT_DIR, "index.html")
-WEEKLY_FILE = "data/history/weekly/weekly_trends.csv"
+output_path = "docs/index.html"
 
-os.makedirs(OUTPUT_DIR, exist_ok=True)
+daily_path = "data/history/daily/daily_trends.csv"
 
-# If weekly data does not exist yet
-if not os.path.exists(WEEKLY_FILE):
-    html = """
-    <html>
-      <head><title>Drift Monitor</title></head>
-      <body>
-        <h1>Drift Monitor</h1>
-        <p><b>Status:</b> No trend data available yet.</p>
-        <p>Automation is running correctly. Data will appear over time.</p>
-      </body>
-    </html>
-    """
-    with open(OUTPUT_FILE, "w") as f:
-        f.write(html)
-    exit(0)
+html = """
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drift Monitor</title>
+</head>
+<body>
+<h1>Drift Monitor</h1>
+"""
 
-df = pd.read_csv(WEEKLY_FILE)
+if not os.path.exists(daily_path):
+    html += "<p>Status: No trend data available yet.</p>"
+    html += "<p>Automation is running correctly. Data will appear over time.</p>"
+else:
+    df = pd.read_csv(daily_path)
 
-# If file exists but has no rows
-if df.empty:
-    html = """
-    <html>
-      <head><title>Drift Monitor</title></head>
-      <body>
-        <h1>Drift Monitor</h1>
-        <p><b>Status:</b> Weekly trend file exists but contains no data yet.</p>
-      </body>
-    </html>
-    """
-    with open(OUTPUT_FILE, "w") as f:
-        f.write(html)
-    exit(0)
+    if df.empty:
+        html += "<p>Status: No trend data available yet.</p>"
+    else:
+        latest = df.iloc[-1]
 
-# Normal dashboard
-fig = px.line(
-    df,
-    x="date",
-    y="risk_score",
-    color="category",
-    title="AI Safety Risk Trends (Weekly)"
-)
+        html += f"""
+        <h2>Daily AI Risk Signal</h2>
+        <p><b>Date:</b> {latest['date']}</p>
+        <p><b>Total Risk Score:</b> {latest['risk_score']}</p>
 
-fig.write_html(OUTPUT_FILE)
+        <h3>History</h3>
+        <table border="1" cellpadding="6">
+            <tr><th>Date</th><th>Risk Score</th></tr>
+        """
+
+        for _, row in df.iterrows():
+            html += f"<tr><td>{row['date']}</td><td>{row['risk_score']}</td></tr>"
+
+        html += "</table>"
+
+html += "</body></html>"
+
+os.makedirs("docs", exist_ok=True)
+with open(output_path, "w") as f:
+    f.write(html)
+
+print("Dashboard built successfully")

@@ -1,28 +1,35 @@
 from pytrends.request import TrendReq
 import pandas as pd
-from datetime import datetime
+import time
 import os
+from datetime import datetime
 
-pytrends = TrendReq(hl="en-US", tz=330)
-
-KEYWORDS = [
-    "AI safety",
-    "AI regulation",
-    "AI bias",
-    "AI misuse",
-    "artificial intelligence risk"
-]
-
-pytrends.build_payload(KEYWORDS, timeframe="now 1-d")
-df = pytrends.interest_over_time()
-
-if df.empty:
-    raise RuntimeError("No Google Trends data returned")
-
-df.reset_index(inplace=True)
+os.makedirs("data/raw", exist_ok=True)
 
 today = datetime.utcnow().strftime("%Y-%m-%d")
-os.makedirs("data/raw", exist_ok=True)
-df.to_csv(f"data/raw/google_trends_{today}.csv", index=False)
+outfile = f"data/raw/google_trends_{today}.csv"
 
-print("Google Trends collected:", today)
+try:
+    pytrends = TrendReq(hl="en-US", tz=360)
+    pytrends.build_payload(
+        ["artificial intelligence", "AI safety", "AI regulation"],
+        timeframe="now 1-d"
+    )
+
+    time.sleep(10)  # IMPORTANT: reduce rate limit risk
+
+    df = pytrends.interest_over_time()
+
+    if df.empty:
+        raise Exception("Empty Google Trends data")
+
+    df.reset_index(inplace=True)
+    df.to_csv(outfile, index=False)
+    print("Google Trends collected")
+
+except Exception as e:
+    # FAIL-SAFE fallback
+    print("Google Trends skipped:", e)
+    pd.DataFrame(
+        {"date": [], "note": ["rate limited or unavailable"]}
+    ).to_csv(outfile, index=False)

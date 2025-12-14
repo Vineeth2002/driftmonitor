@@ -1,42 +1,137 @@
 import pandas as pd
-from pathlib import Path
+import os
 from datetime import datetime
 
-OUTPUT = Path("docs/index.html")
-OUTPUT.parent.mkdir(exist_ok=True)
+OUTPUT_DIR = "docs"
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-SEVERITY_COLORS = {
-    "🟢 LOW": "#1b5e20",
-    "🟠 MEDIUM": "#e65100",
-    "🔴 HIGH": "#b71c1c"
-}
+def load_csv(path):
+    return pd.read_csv(path) if os.path.exists(path) else None
 
-def load_table(path):
-    if not path.exists():
-        return None
-    return pd.read_csv(path)
+def severity_label(p):
+    if p > 5:
+        return "HIGH"
+    elif p >= 1:
+        return "MEDIUM"
+    return "LOW"
 
-def render_table(df, title):
+def severity_badge(label):
+    colors = {
+        "LOW": "🟢 LOW",
+        "MEDIUM": "🟡 MEDIUM",
+        "HIGH": "🔴 HIGH"
+    }
+    return colors[label]
+
+def prepare(df):
+    df["risk_percentage"] = ((df["risk_words"] / df["total_words"]) * 100).round(2)
+    df["severity"] = df["risk_percentage"].apply(severity_label)
+    df["severity"] = df["severity"].apply(severity_badge)
+    return df
+
+daily = load_csv("data/history/daily/daily_summary.csv")
+weekly = load_csv("data/history/weekly/weekly_summary.csv")
+monthly = load_csv("data/history/monthly/monthly_summary.csv")
+quarterly = load_csv("data/history/quarterly/quarterly_summary.csv")
+
+html = f"""
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AI Drift Monitor</title>
+<style>
+body {{
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background: #f6f8fa;
+}}
+h1 {{
+    margin-bottom: 5px;
+}}
+.status {{
+    font-weight: bold;
+    margin-bottom: 30px;
+}}
+.container {{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 30px;
+}}
+.card {{
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}}
+table {{
+    width: 100%;
+    border-collapse: collapse;
+}}
+th {{
+    background: #2f363d;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}}
+td {{
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}}
+.badge {{
+    font-weight: bold;
+}}
+.guide {{
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 20px;
+}}
+.footer {{
+    margin-top: 40px;
+    color: #555;
+    font-size: 14px;
+}}
+</style>
+</head>
+
+<body>
+
+<h1>AI Drift Monitor</h1>
+<div class="status">Status: Automated monitoring active</div>
+
+<div class="container">
+
+<div>
+"""
+
+def section(title, df):
     if df is None or df.empty:
-        return f"<h3>{title}</h3><p>No data available yet.</p>"
+        return f"<div class='card'><h2>{title}</h2><p>No data available yet.</p></div>"
 
+    df = prepare(df)
     rows = ""
     for _, r in df.iterrows():
-        color = SEVERITY_COLORS.get(r["severity"], "#333")
         rows += f"""
-        <tr style="border-left:6px solid {color}">
+        <tr>
+            <td>{r['date']}</td>
             <td>{r['category']}</td>
-            <td>{int(r['total_words'])}</td>
-            <td>{int(r['risk_words'])}</td>
+            <td>{r['total_words']}</td>
+            <td>{r['risk_words']}</td>
             <td>{r['risk_percentage']}%</td>
-            <td><strong style="color:{color}">{r['severity']}</strong></td>
+            <td class="badge">{r['severity']}</td>
         </tr>
         """
 
     return f"""
-    <h3>{title}</h3>
+    <div class="card">
+    <h2>{title}</h2>
     <table>
         <tr>
+            <th>Date</th>
             <th>Category</th>
             <th>Total Words</th>
             <th>Risk Words</th>
@@ -45,75 +140,37 @@ def render_table(df, title):
         </tr>
         {rows}
     </table>
+    </div>
     """
 
-daily = load_table(Path("data/history/daily/daily_trends.csv"))
-weekly = load_table(Path("data/history/weekly/weekly_trends.csv"))
-monthly = load_table(Path("data/history/monthly/monthly_trends.csv"))
-quarterly = load_table(Path("data/history/quarterly/quarterly_trends.csv"))
+html += section("Daily AI Risk Summary", daily)
+html += section("Weekly AI Risk Summary", weekly)
+html += section("Monthly AI Risk Summary", monthly)
+html += section("Quarterly AI Risk Summary", quarterly)
 
-html = f"""
-<!DOCTYPE html>
-<html>
-<head>
-<title>AI Drift Monitor</title>
-<style>
-body {{
-    font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: #e5e7eb;
-    padding: 40px;
-}}
-h1 {{ color: #f8fafc; }}
-h3 {{ margin-top: 40px; }}
-table {{
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-    background: #020617;
-}}
-th {{
-    background: #111827;
-    padding: 10px;
-}}
-td {{
-    padding: 10px;
-    border-bottom: 1px solid #1f2933;
-}}
-.legend {{
-    background:#020617;
-    padding:15px;
-    border-radius:8px;
-    width: fit-content;
-}}
-</style>
-</head>
-<body>
-
-<h1>AI Drift Monitor</h1>
-<p><strong>Status:</strong> Automated monitoring active</p>
-
-<div class="legend">
-<b>Severity Legend</b><br>
-🟢 LOW – Normal signal level<br>
-🟠 MEDIUM – Elevated attention<br>
-🔴 HIGH – Immediate concern
+html += """
 </div>
 
-{render_table(daily, "Daily Risk Summary")}
-{render_table(weekly, "Weekly Risk Summary")}
-{render_table(monthly, "Monthly Risk Summary")}
-{render_table(quarterly, "Quarterly Risk Summary")}
+<div class="guide">
+<h2>Severity Guide</h2>
+<p>🟢 <b>LOW</b><br>&lt; 1% risk words<br>Minimal AI risk</p>
+<p>🟡 <b>MEDIUM</b><br>1–5% risk words<br>Moderate AI risk</p>
+<p>🔴 <b>HIGH</b><br>&gt; 5% risk words<br>Elevated AI risk</p>
+</div>
 
-<p style="margin-top:40px;font-size:12px;">
-Last updated (UTC): {datetime.utcnow()}<br>
+</div>
+
+<div class="footer">
+Last updated (UTC): """ + datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S") + """<br>
 Sources: Google Trends, Hacker News<br>
 Pipeline: GitHub Actions (Automated)
-</p>
+</div>
 
 </body>
 </html>
 """
 
-OUTPUT.write_text(html, encoding="utf-8")
+with open("docs/index.html", "w", encoding="utf-8") as f:
+    f.write(html)
+
 print("Dashboard built successfully")

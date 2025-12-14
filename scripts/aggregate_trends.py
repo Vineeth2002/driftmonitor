@@ -1,39 +1,30 @@
 import pandas as pd
 import os
 
-df = pd.read_csv("data/history/daily/daily_trends.csv")
-df["date"] = pd.to_datetime(df["date"])
-
 BASE = "data/history"
+daily = pd.read_csv(f"{BASE}/daily/daily_trends.csv")
+daily["date"] = pd.to_datetime(daily["date"])
 
-def agg(freq, name):
-    out = (
-        df.groupby([pd.Grouper(key="date", freq=freq),"category"])
-          .agg(
-              total_words=("total_words","sum"),
-              risk_words=("risk_words","sum"),
-              risk_percentage=("risk_percentage","mean")
-          )
-          .reset_index()
+def build(freq, folder, name):
+    df = (
+        daily.groupby([pd.Grouper(key="date", freq=freq), "category"])
+        .agg({
+            "total_words": "sum",
+            "risk_words": "sum",
+            "risk_percentage": "mean"
+        })
+        .reset_index()
     )
 
-    out = out.sort_values(["category","date"])
-    out["prev"] = out.groupby("category")["risk_percentage"].shift(1)
+    df["severity"] = df["risk_percentage"].apply(
+        lambda p: "🟢 LOW" if p < 1 else "🟡 MEDIUM" if p <= 5 else "🔴 HIGH"
+    )
 
-    def trend(r):
-        if pd.isna(r["prev"]): return "NEW"
-        if r["risk_percentage"] > r["prev"]: return "UP"
-        if r["risk_percentage"] < r["prev"]: return "DOWN"
-        return "STABLE"
+    df["trend"] = "➖"
 
-    out["trend"] = out.apply(trend, axis=1)
-    out.drop(columns=["prev"], inplace=True)
+    os.makedirs(f"{BASE}/{folder}", exist_ok=True)
+    df.to_csv(f"{BASE}/{folder}/{name}.csv", index=False)
 
-    os.makedirs(f"{BASE}/{name}", exist_ok=True)
-    out.to_csv(f"{BASE}/{name}/{name}_trends.csv", index=False)
-
-agg("W","weekly")
-agg("M","monthly")
-agg("Q","quarterly")
-
-print("Trend aggregation complete")
+build("W", "weekly", "weekly_trends")
+build("M", "monthly", "monthly_trends")
+build("Q", "quarterly", "quarterly_trends")

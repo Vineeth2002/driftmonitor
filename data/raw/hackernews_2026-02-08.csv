@@ -1,8 +1,11 @@
 id,title,score,comments,time
-46930391,Show HN: LocalGPT – A local-first AI assistant in Rust with persistent memory,151,48,2026-02-08 01:26:38
-46924790,"Al Lowe on model trains, funny deaths and working with Disney",109,24,2026-02-07 15:52:42
-46928810,FDA intends to take action against non-FDA-approved GLP-1 drugs,113,240,2026-02-07 22:25:03
-46922969,The AI boom is causing shortages everywhere else,312,499,2026-02-07 11:21:29
-46918254,"Monty: A minimal, secure Python interpreter written in Rust for use by AI",314,158,2026-02-06 21:16:36
-46916609,"Show HN: If you lose your memory, how to regain access to your computer?",374,218,2026-02-06 18:51:58
-46916586,How to effectively write quality code with AI,333,290,2026-02-06 18:49:59
+46932343,Matchlock: Linux-based sandboxing for AI agents,48,11,2026-02-08 08:07:55
+46932678,Reverse Engineering Raiders of the Lost Ark for the Atari 2600,18,1,2026-02-08 09:10:18
+46930391,Show HN: LocalGPT – A local-first AI assistant in Rust with persistent memory,250,125,2026-02-08 01:26:38
+46933067,(AI) Slop Terrifies Me,60,35,2026-02-08 10:31:35
+46931347,Substack confirms data breach affects users’ email addresses and phone numbers,88,39,2026-02-08 04:34:50
+46932468,Arcan Explained – A browser for different webs,3,0,2026-02-08 08:30:24
+46924790,"Al Lowe on model trains, funny deaths and working with Disney",114,28,2026-02-07 15:52:42
+46922969,The AI boom is causing shortages everywhere else,366,617,2026-02-07 11:21:29
+46928810,FDA intends to take action against non-FDA-approved GLP-1 drugs,132,270,2026-02-07 22:25:03
+46916586,How to effectively write quality code with AI,343,296,2026-02-06 18:49:59

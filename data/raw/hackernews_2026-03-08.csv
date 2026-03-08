@@ -1,7 +1,9 @@
 id,title,score,comments,time
-47293415,"""Warn about PyPy being unmaintained""",95,24,2026-03-08 01:35:21
-47289311,A decade of Docker containers,273,192,2026-03-07 16:55:18
-47291123,Autoresearch: Agents researching on single-GPU nanochat training automatically,87,23,2026-03-07 20:22:45
-47268838,Self-Portrait by Ernst Mach (1886),104,18,2026-03-05 23:48:26
-47285960,"Uploading Pirated Books via BitTorrent Qualifies as Fair Use, Meta Argues",422,233,2026-03-07 09:18:40
-47289406,Verification debt: the hidden cost of AI-generated code,89,83,2026-03-07 17:08:30
+47295537,SWE-CI: Evaluating Agent Capabilities in Maintaining Codebases via CI,69,15,2026-03-08 08:11:50
+47249139,Rijksmuseum researchers discover new painting by Rembrandt van Rijn,55,10,2026-03-04 15:42:49
+47293415,Warn about PyPy being unmaintained,231,107,2026-03-08 01:35:21
+47289311,A decade of Docker containers,318,216,2026-03-07 16:55:18
+47283365,Some Words on WigglyPaint,27,3,2026-03-07 01:21:47
+47291123,Autoresearch: Agents researching on single-GPU nanochat training automatically,135,33,2026-03-07 20:22:45
+47268838,Self-Portrait by Ernst Mach (1886),111,20,2026-03-05 23:48:26
+47293745,Show HN: SiClaw – Open-source AIOps with a hypothesis-driven diagnostic engine,6,0,2026-03-08 02:27:50

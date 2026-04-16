@@ -1,10 +1,15 @@
 id,title,score,comments,time
-47792538,Cloudflare's AI Platform: an inference layer designed for agents,21,2,2026-04-16 13:17:37
-47791236,AI cybersecurity is not proof of work,64,15,2026-04-16 10:48:00
-47792593,Cloudflare Email Service: now in public beta. Ready for your agents,12,0,2026-04-16 13:21:53
-47788424,FSF trying to contact Google about spammer sending 10k+ mails from Gmail account,242,154,2026-04-16 03:44:38
+47792538,Cloudflare's AI Platform: an inference layer designed for agents,169,41,2026-04-16 13:17:37
+47794391,We gave an AI a 3 year retail lease and asked it to make a profit,141,198,2026-04-16 15:13:13
+47792593,Cloudflare Email Service,333,143,2026-04-16 13:21:53
+47788424,FSF trying to contact Google about spammer sending 10k+ mails from Gmail account,335,195,2026-04-16 03:44:38
+47791236,AI cybersecurity is not proof of work,161,73,2026-04-16 10:48:00
+47796197,Japan implements language proficiency requirements for certain visa applicants,59,30,2026-04-16 16:53:32
 47789607,RamAIn (YC W26) Is Hiring,1,0,2026-04-16 07:01:29
-47778920,US v. Heppner (S.D.N.Y. 2026) no attorney-client privilege for AI chats [pdf],158,109,2026-04-15 13:47:40
-47780971,Show HN: Libretto – Making AI browser automations deterministic,112,45,2026-04-15 15:57:54
-47790353,Shares in shoe brand Allbirds rise 580% after it pivots from footwear to AI,14,6,2026-04-16 08:43:51
-47787957,Tailscale-rs: Official Rust library for embedding Tailscale,40,1,2026-04-16 02:30:16
+47793926,Laravel raised money and now injects ads directly into your agent,162,94,2026-04-16 14:51:13
+47797632,Ask HN: How do you maintain flow when vibe coding?,6,1,2026-04-16 18:38:08
+47798042,"Mozilla Announces ""Thunderbolt"" as an Open-Source, Enterprise AI Client",5,2,2026-04-16 19:09:07
+47790353,Shares in shoe brand Allbirds rise 580% after it pivots from footwear to AI,42,18,2026-04-16 08:43:51
+47790791,SDL bans AI-written commits,94,101,2026-04-16 09:40:43
+47778920,US v. Heppner (S.D.N.Y. 2026) no attorney-client privilege for AI chats [pdf],172,123,2026-04-15 13:47:40
+47780971,Show HN: Libretto – Making AI browser automations deterministic,120,49,2026-04-15 15:57:54

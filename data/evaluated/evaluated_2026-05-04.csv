@@ -14603,6 +14603,10 @@ date,category,total_words,risk_words,risk_percentage,severity
 2026-05-04,AI regulation,7,0,0.0,🟢 LOW
 2026-05-04,AI bias,7,0,0.0,🟢 LOW
 2026-05-04,AI misuse,7,0,0.0,🟢 LOW
+2026-05-04,AI safety,10,0,0.0,🟢 LOW
+2026-05-04,AI regulation,10,0,0.0,🟢 LOW
+2026-05-04,AI bias,10,0,0.0,🟢 LOW
+2026-05-04,AI misuse,10,0,0.0,🟢 LOW
 2026-05-04,AI safety,4,0,0.0,🟢 LOW
 2026-05-04,AI regulation,4,0,0.0,🟢 LOW
 2026-05-04,AI bias,4,0,0.0,🟢 LOW

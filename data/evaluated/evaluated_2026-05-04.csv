@@ -14619,10 +14619,6 @@ date,category,total_words,risk_words,risk_percentage,severity
 2026-05-04,AI regulation,10,0,0.0,🟢 LOW
 2026-05-04,AI bias,10,0,0.0,🟢 LOW
 2026-05-04,AI misuse,10,0,0.0,🟢 LOW
-2026-05-04,AI safety,7,0,0.0,🟢 LOW
-2026-05-04,AI regulation,7,0,0.0,🟢 LOW
-2026-05-04,AI bias,7,0,0.0,🟢 LOW
-2026-05-04,AI misuse,7,0,0.0,🟢 LOW
 2026-05-04,AI safety,5,0,0.0,🟢 LOW
 2026-05-04,AI regulation,5,1,20.0,🔴 HIGH
 2026-05-04,AI bias,5,0,0.0,🟢 LOW

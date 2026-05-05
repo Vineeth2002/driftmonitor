@@ -1,8 +1,12 @@
 id,title,score,comments,time
-48019219,Google Chrome silently installs a 4 GB AI model on your device without consent,24,12,2026-05-05 07:34:55
-48017948,Train Your Own LLM from Scratch,186,22,2026-05-05 04:09:17
-48017813,CVE-2026-31431: Copy Fail vs. rootless containers,86,28,2026-05-05 03:43:08
-48013919,How OpenAI delivers low-latency voice AI at scale,390,123,2026-05-04 19:42:47
-48016534,Y Combinator's Stake in OpenAI (0.6%?),300,46,2026-05-05 00:09:01
-48010266,Sierra Raises $950M at $15B Valuation,105,130,2026-05-04 15:51:37
-48017366,"Why AI Agents Need Proof Chains, Not Just Logs",8,0,2026-05-05 02:17:39
+48023861,Three Inverse Laws of AI,244,163,2026-05-05 15:27:18
+48026342,Show HN: Explore color palettes inspired by 3000 master painter artworks,11,6,2026-05-05 18:13:14
+48023496,Show HN: Airbyte Agents – context for agents across multiple data sources,58,6,2026-05-05 15:03:18
+47962032,Should I Run Plain Docker Compose in Production in 2026?,284,215,2026-04-30 13:21:43
+48020063,When everyone has AI and the company still learns nothing,235,165,2026-05-05 09:30:22
+48019219,Google Chrome silently installs a 4 GB AI model on your device without consent,893,622,2026-05-05 07:34:55
+48022742,"AI didn't delete your database, you did",441,227,2026-05-05 14:07:50
+48021968,AI Product Graveyard,230,83,2026-05-05 13:00:47
+48017813,CVE-2026-31431: Copy Fail vs. rootless containers,172,97,2026-05-05 03:43:08
+48023346,Airborne Microplastics May Be Warming the Planet,12,0,2026-05-05 14:53:52
+48017948,Train Your Own LLM from Scratch,396,49,2026-05-05 04:09:17

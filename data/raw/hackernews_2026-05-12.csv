@@ -1,12 +1,10 @@
 id,title,score,comments,time
-48100706,Postmortem: TanStack NPM supply-chain compromise,815,314,2026-05-11 21:08:25
-48100433,"If AI writes your code, why use Python?",454,497,2026-05-11 20:45:55
-48098261,UCLA discovers first stroke rehabilitation drug to repair brain damage (2025),326,66,2026-05-11 17:53:08
-48094641,Google says criminal hackers used AI to find a major software flaw,176,137,2026-05-11 13:20:14
-48100662,I let AI build a tool to help me figure out what was waking me up at night,169,178,2026-05-11 21:04:10
-48085685,"Training an LLM in Swift, Part 1: Taking matrix mult from Gflop/s to Tflop/s",237,12,2026-05-10 17:05:05
-48098122,Bild AI (YC W25) Is Hiring Founding Product Engineers,1,0,2026-05-11 17:43:12
-48092028,Gmail registration now requires scanning a QR code and sending a text message,594,452,2026-05-11 07:26:54
-48085821,Local AI needs to be the norm,1802,717,2026-05-10 17:19:28
-48100227,Show HN: E2a – Open-source email gateway for AI agents,38,3,2026-05-11 20:26:17
-48104282,Supercomputer networking to accelerate large scale AI training,10,1,2026-05-12 04:46:14
+48100706,Postmortem: TanStack NPM supply-chain compromise,942,396,2026-05-11 21:08:25
+48107024,Text Blaze (YC W21) Is Hiring for a No-AI Summer Internship,1,0,2026-05-12 12:00:46
+48100433,"If AI writes your code, why use Python?",673,696,2026-05-11 20:45:55
+48098261,UCLA discovers first stroke rehabilitation drug to repair brain damage (2025),390,78,2026-05-11 17:53:08
+48100662,I let AI build a tool to help me figure out what was waking me up at night,230,239,2026-05-11 21:04:10
+48094641,Google says criminal hackers used AI to find a major software flaw,215,157,2026-05-11 13:20:14
+48085685,"Training an LLM in Swift, Part 1: Taking matrix mult from Gflop/s to Tflop/s",246,12,2026-05-10 17:05:05
+48085821,Local AI needs to be the norm,1816,725,2026-05-10 17:19:28
+48092028,Gmail registration now requires scanning a QR code and sending a text message,605,483,2026-05-11 07:26:54

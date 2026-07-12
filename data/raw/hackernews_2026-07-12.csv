@@ -1,7 +1,8 @@
 id,title,score,comments,time
-48876505,Mesh LLM: distributed AI computing on iroh,128,32,2026-07-11 22:38:57
-48877371,What xAI's Grok Build CLI Actually Sends to xAI,76,32,2026-07-12 01:09:50
-48875342,Show HN: Sqlsure – deterministic semantic checks for AI-generated SQL,21,1,2026-07-11 20:03:42
-48873692,Female US rower completes historic solo journey from California to Hawaii,276,92,2026-07-11 17:03:23
-48876619,Fixed three bugs that made Qwen3.5-122B a daily driver on Mac Studio,8,0,2026-07-11 22:54:06
-48875371,Wealthy AI workers send San Francisco house prices soaring,19,7,2026-07-11 20:06:38
+48876505,Mesh LLM: distributed AI computing on iroh,231,51,2026-07-11 22:38:57
+48878126,"Under federal rule, colleges must leave grads better off or lose financial aid",66,109,2026-07-12 04:00:14
+48876619,Fixed three bugs that made Qwen3.5-122B a daily driver on Mac Studio,55,22,2026-07-11 22:54:06
+48875342,Show HN: Sqlsure – deterministic semantic checks for AI-generated SQL,30,6,2026-07-11 20:03:42
+48873692,Female US rower completes historic solo journey from California to Hawaii,289,99,2026-07-11 17:03:23
+48875678,"I built TradingSpy: local, privacy-first AI trading assistant(First Open Source)",18,0,2026-07-11 20:45:06
+48877371,What xAI's Grok Build CLI Actually Sends to xAI,263,124,2026-07-12 01:09:50

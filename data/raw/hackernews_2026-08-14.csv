@@ -1,9 +1,7 @@
 id,title,score,comments,time
-49295238,Ruby 4.0 Universal RCE Deserialization Gadget Chain,50,13,2026-08-14 06:09:04
-49285418,Nine PBS sues Iron Mountain over blocked access to archival data,340,197,2026-08-13 13:14:12
-49290768,How Organizations Use AI: Evidence from ChatGPT [pdf],117,92,2026-08-13 19:25:38
-49285327,"Choosing an AI model: one prompt, 11 models, different results",208,88,2026-08-13 13:05:29
-49287153,Text AI watermarks will always be trivial to remove,133,156,2026-08-13 15:07:10
-49288293,AI At Home Part 1: A Box Of Scraps,121,56,2026-08-13 16:22:05
-49286270,Heart aerospace completes first flight of largest electric aircraft,132,141,2026-08-13 14:11:51
-49269090,Launch HN: Discovered Materials (YC P26) – AI agents to discover new materials,157,35,2026-08-12 07:51:20
+49300568,AI by Hand,71,7,2026-08-14 15:58:59
+49300314,Google is making private AI practical with homomorphic encryption,96,67,2026-08-14 15:43:10
+49299102,AI Model Atlas – visualizing populations of ML models as interconnected 3D graph,35,5,2026-08-14 14:22:39
+49298088,"HashAgent – Share an AI agent as a URL, runs locally via WebGPU",38,4,2026-08-14 12:57:02
+49298674,Show HN: Is AI Dumber Today? An index of AI model experience from user's opinion,10,2,2026-08-14 13:50:46
+49295238,Ruby 4.0 Universal RCE Deserialization Gadget Chain,70,21,2026-08-14 06:09:04

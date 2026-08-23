@@ -69499,10 +69499,6 @@ date,category,total_words,risk_words,risk_percentage,severity
 2026-08-23,AI regulation,1,0,0.0,🟢 LOW
 2026-08-23,AI bias,1,0,0.0,🟢 LOW
 2026-08-23,AI misuse,1,0,0.0,🟢 LOW
-2026-08-23,AI safety,1,0,0.0,🟢 LOW
-2026-08-23,AI regulation,1,0,0.0,🟢 LOW
-2026-08-23,AI bias,1,0,0.0,🟢 LOW
-2026-08-23,AI misuse,1,0,0.0,🟢 LOW
 2026-08-23,AI safety,5,0,0.0,🟢 LOW
 2026-08-23,AI regulation,5,1,20.0,🔴 HIGH
 2026-08-23,AI bias,5,0,0.0,🟢 LOW
@@ -121743,10 +121739,10 @@ date,category,total_words,risk_words,risk_percentage,severity
 2026-08-23,AI regulation,13,0,0.0,🟢 LOW
 2026-08-23,AI bias,13,0,0.0,🟢 LOW
 2026-08-23,AI misuse,13,0,0.0,🟢 LOW
-2026-08-23,AI safety,13,0,0.0,🟢 LOW
-2026-08-23,AI regulation,13,0,0.0,🟢 LOW
-2026-08-23,AI bias,13,0,0.0,🟢 LOW
-2026-08-23,AI misuse,13,0,0.0,🟢 LOW
+2026-08-23,AI safety,8,0,0.0,🟢 LOW
+2026-08-23,AI regulation,8,0,0.0,🟢 LOW
+2026-08-23,AI bias,8,0,0.0,🟢 LOW
+2026-08-23,AI misuse,8,0,0.0,🟢 LOW
 2026-08-23,AI safety,10,0,0.0,🟢 LOW
 2026-08-23,AI regulation,10,0,0.0,🟢 LOW
 2026-08-23,AI bias,10,0,0.0,🟢 LOW

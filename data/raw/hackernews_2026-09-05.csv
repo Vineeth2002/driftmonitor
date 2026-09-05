@@ -1,7 +1,6 @@
 id,title,score,comments,time
-49563355,Discovery of a new OpenAI agent message board,1857,1419,2026-09-04 11:54:53
-49574167,"AI handles incidents, engineers lose touch with their systems",256,216,2026-09-05 07:52:50
-49569366,Can AI design circuit boards yet?,300,179,2026-09-04 19:48:29
-49568828,Government Rails Site Hit Hours After CVE Patch,106,35,2026-09-04 19:06:39
-49572875,"GPT-6 Astra in code review: Gains, privacy, and cost",66,59,2026-09-05 03:38:56
-49576187,"AMD unveils Threadripper Halo Station, an AI workstation packing 96 cores",6,0,2026-09-05 13:09:53
+49576343,Visualizing Rust's Vtables: How dyn Trait Works In Memory,59,0,2026-09-05 13:31:05
+49563355,Discovery of a new OpenAI agent message board,2003,1483,2026-09-04 11:54:53
+49569366,Can AI design circuit boards yet?,339,201,2026-09-04 19:48:29
+49574167,"AI handles incidents, engineers lose touch with their systems",329,286,2026-09-05 07:52:50
+49568828,Government Rails Site Hit Hours After CVE Patch,110,35,2026-09-04 19:06:39

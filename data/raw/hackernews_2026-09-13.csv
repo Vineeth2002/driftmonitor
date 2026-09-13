@@ -1,13 +1,11 @@
 id,title,score,comments,time
-49678969,"Why are AI agents lying, cheating and coordinating?",265,332,2026-09-13 01:22:31
-49673098,Nvidia is the central bank of AI,497,352,2026-09-12 15:08:27
-49678683,Everyone should slow down AI development except for me,521,314,2026-09-13 00:30:44
-49678435,AgentsDock: An IDE designed for agentic AI research,65,29,2026-09-12 23:45:58
-49645480,"LG denies TV spying claims, says tracking and snooping concerns 'not true'",543,423,2026-09-10 15:31:37
-49676820,"Real-SWE: Benchmarking AI models on private, real-world, enterprise codebases",247,137,2026-09-12 20:25:48
-49658672,I fixed a tractor using John Deere's self-repair service. Farmers aren't sold,130,142,2026-09-11 14:07:08
-49626718,A Design Space Exploration of Async/Await,443,128,2026-09-09 13:59:50
-49662371,A misalignment of AI in mathematics,1198,1177,2026-09-11 17:45:12
-49671159,The worst spam emails: iLands AI agent hustle,114,55,2026-09-12 11:13:38
-49680858,Why So Many AI Researchers Think the Machines Could Kill Everyone,13,14,2026-09-13 07:02:40
-49679765,JWST finds extreme star-forming galaxies masquerading as faint quasars,6,1,2026-09-13 03:39:19
+49678969,"Why are AI agents lying, cheating and coordinating?",438,511,2026-09-13 01:22:31
+49678423,TailTalk: A modern async user space AppleTalk stack with Rust and Tokio,39,11,2026-09-12 23:43:31
+49673098,Nvidia is the central bank of AI,532,382,2026-09-12 15:08:27
+49678683,Everyone should slow down AI development except for me,666,389,2026-09-13 00:30:44
+49684180,"Security through obscurity is dead, and AI delivered the fatal blow",10,5,2026-09-13 14:08:51
+49645480,"LG denies TV spying claims, says tracking and snooping concerns 'not true'",593,450,2026-09-10 15:31:37
+49626718,A Design Space Exploration of Async/Await,449,129,2026-09-09 13:59:50
+49678435,AgentsDock: An IDE designed for agentic AI research,74,31,2026-09-12 23:45:58
+49658672,I fixed a tractor using John Deere's self-repair service. Farmers aren't sold,135,148,2026-09-11 14:07:08
+49676820,"Real-SWE: Benchmarking AI models on private, real-world, enterprise codebases",256,140,2026-09-12 20:25:48

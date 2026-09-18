@@ -1,9 +1,10 @@
 id,title,score,comments,time
-49749656,Hacking OpenAI,39,10,2026-09-18 02:47:24
-49746618,Bonsai 2 27B: Near-Lossless Compression in a 9x Smaller Footprint,293,92,2026-09-17 21:13:31
-49746163,"Bend – A language that blocks AI mistakes via proof, on CPU and GPU",351,178,2026-09-17 20:36:13
-49710447,"Diplodocus, Long Thought Exclusively American, Turns Up in Spain",39,27,2026-09-15 10:46:24
-49746628,How Uber Protects Against Retry Storms,67,29,2026-09-17 21:14:32
-49714096,TSMC revealing details about next gen A14 node,100,40,2026-09-15 15:31:55
-49743049,Launch HN: Skillsync (YC W26) – AI chat sessions made portable across agents,53,51,2026-09-17 16:22:15
-49740105,"Show HN: Share your AI Setup, Learn from others",199,112,2026-09-17 13:01:44
+49746618,Bonsai 2 27B: Near-Lossless Compression in a 9x Smaller Footprint,460,135,2026-09-17 21:13:31
+49752056,Microsoft exec called AI scraping 'the largest theft of labor in human history',76,28,2026-09-18 09:45:07
+49746163,"Bend – A language that blocks AI mistakes via proof, on CPU and GPU",484,227,2026-09-17 20:36:13
+49749656,A heap overflow and SSO misconfiguration to compromise OpenAI internal repos,364,156,2026-09-18 02:47:24
+49710447,"Diplodocus, Long Thought Exclusively American, Turns Up in Spain",73,44,2026-09-15 10:46:24
+49746628,How Uber Protects Against Retry Storms,102,44,2026-09-17 21:14:32
+49714096,TSMC revealing details about next gen A14 node,112,47,2026-09-15 15:31:55
+49740105,"Show HN: Share your AI Setup, Learn from others",216,121,2026-09-17 13:01:44
+49743049,Launch HN: Skillsync (YC W26) – AI chat sessions made portable across agents,56,53,2026-09-17 16:22:15

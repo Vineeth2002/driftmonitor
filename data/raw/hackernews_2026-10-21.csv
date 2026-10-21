@@ -1,10 +1,7 @@
 id,title,score,comments,time
-50180836,PHP2Shell: AI uncovers critical RCE in PHP,366,125,2026-10-21 13:43:19
-50183727,Rust off Rails: The opinionated web stack for the AI era,8,0,2026-10-21 16:34:16
-50181326,Cloudflare deploys protections against php2shell vulnerability,55,5,2026-10-21 14:11:14
-50180752,Using thousands of AI agents to uncover new leads in biological data,51,14,2026-10-21 13:37:00
-50180079,OpenAI models are coming to Google Cloud,33,1,2026-10-21 12:53:11
-50183253,"AI agent fixed the bug, but what else did it change?",10,1,2026-10-21 16:03:32
-50183597,Ask HN: How can you retrain in a field requiring expensive equipment?,8,1,2026-10-21 16:25:26
-50175059,Good type against all odds,183,18,2026-10-21 01:45:07
-50179857,LayerFS: The filesystem for AI coding agents,62,32,2026-10-21 12:34:46
+50180079,OpenAI models are coming to Google Cloud,182,83,2026-10-21 12:53:11
+50180752,Using thousands of AI agents to uncover new leads in biological data,113,59,2026-10-21 13:37:00
+50186043,Google staff resign in backlash over its AI contracts with military,46,2,2026-10-21 19:14:21
+50186318,Plex laid off the whole player team,92,68,2026-10-21 19:32:10
+50175059,Good type against all odds,194,20,2026-10-21 01:45:07
+50183253,"AI agent fixed the bug, but what else did it change?",42,5,2026-10-21 16:03:32

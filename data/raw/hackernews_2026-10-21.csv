@@ -1,6 +1,10 @@
 id,title,score,comments,time
-50158314,Does Ruby on Rails still make sense?,15,3,2026-10-19 21:29:58
-50175059,Good type against all odds,139,12,2026-10-21 01:45:07
-50178218,"Show HN: Linkit – AI bookmark manager, 100% free and open source",3,0,2026-10-21 09:51:41
-50167583,Launch HN: Respan (YC W24) – Open-source Rust AI gateway built around plugins,49,20,2026-10-20 15:09:29
-50169506,Benchmarking Bot Detection Systems Against Modern AI Agents in 2026,46,7,2026-10-20 17:10:31
+50180836,PHP2Shell: AI uncovers critical RCE in PHP,366,125,2026-10-21 13:43:19
+50183727,Rust off Rails: The opinionated web stack for the AI era,8,0,2026-10-21 16:34:16
+50181326,Cloudflare deploys protections against php2shell vulnerability,55,5,2026-10-21 14:11:14
+50180752,Using thousands of AI agents to uncover new leads in biological data,51,14,2026-10-21 13:37:00
+50180079,OpenAI models are coming to Google Cloud,33,1,2026-10-21 12:53:11
+50183253,"AI agent fixed the bug, but what else did it change?",10,1,2026-10-21 16:03:32
+50183597,Ask HN: How can you retrain in a field requiring expensive equipment?,8,1,2026-10-21 16:25:26
+50175059,Good type against all odds,183,18,2026-10-21 01:45:07
+50179857,LayerFS: The filesystem for AI coding agents,62,32,2026-10-21 12:34:46

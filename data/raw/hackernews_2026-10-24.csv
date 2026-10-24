@@ -1,13 +1,10 @@
 id,title,score,comments,time
-50219186,ThinkRail from JetBrains,31,24,2026-10-24 08:08:42
-50171379,"A practical guide to AI image generation, from diffusion to agents",99,29,2026-10-20 19:22:39
-50213925,Dessa: Conversation Model trained only on speech,391,141,2026-10-23 19:09:54
-50218633,"Hacker reverses Samsung TV, finds on-board AI listening OpenAI account suspended",157,35,2026-10-24 05:49:57
-50212507,Air Purifiers as White Noise Machines,133,120,2026-10-23 17:28:36
-50168075,Rise of collagen-eating microbes may help explain gaps in the fossil record,51,2,2026-10-20 15:41:28
-50185715,A Cocktail Party in the Street: An Interview with Alan Stillman (2010),7,1,2026-10-21 18:49:51
-50190363,WorldTUI: I trained a 360M model to pretend to be a terminal,626,186,2026-10-22 02:18:41
-50217683,Alzheimer's breakthrough: 2 hrs of sleep restored without clearing brain plaques,105,23,2026-10-24 01:53:10
-50218743,That AI Temptation,3,1,2026-10-24 06:18:39
-50214983,A whirlwind tour of systemd-nspawn containers (2025),47,8,2026-10-23 20:37:12
-50214416,Securing our frontier model training environment,106,107,2026-10-23 19:50:56
+50171379,"A practical guide to AI image generation, from diffusion to agents",179,52,2026-10-20 19:22:39
+50213925,Dessa: Conversation Model trained only on speech,434,166,2026-10-23 19:09:54
+50220204,AI-Assisted Paper on Z-Library Cites a TorrentFreak Article That Doesn't Exist,71,27,2026-10-24 11:18:54
+50218633,"Hacker reverses Samsung TV, finds on-board AI listening OpenAI account suspended",378,128,2026-10-24 05:49:57
+50191250,The Chalk and the Airplane,22,7,2026-10-22 04:41:58
+50212507,Air Purifiers as White Noise Machines,155,146,2026-10-23 17:28:36
+50168075,Rise of collagen-eating microbes may help explain gaps in the fossil record,66,10,2026-10-20 15:41:28
+50190363,WorldTUI: I trained a 360M model to pretend to be a terminal,630,187,2026-10-22 02:18:41
+50214983,A whirlwind tour of systemd-nspawn containers (2025),54,9,2026-10-23 20:37:12
